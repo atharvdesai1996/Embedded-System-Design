@@ -1,0 +1,27 @@
+Name     Finaldesign ;
+PartNo   00 ;
+Date     9/6/2019 ;
+Revision 01 ;
+Designer Atharv ;
+Company  Cu Boulder ;
+Assembly None ;
+Location  ;
+Device   virtual ;
+
+/* *************** INPUT PINS *********************/
+PIN 3    = A15                     ; /*                                 */ 
+PIN 5    = A14                     ; /*                                 */ 
+PIN 6    = A13                     ; /*                                 */ 
+PIN 7    = A12                     ; /*                                 */ 
+PIN 8    = RD                      ; /*                                 */ 
+PIN 9    = PSEN                    ; /*                                 */ 
+
+/* *************** OUTPUT PINS *********************/
+PIN 19   =  CSPERIPH               ; /*                                 */ 
+PIN 18   =  READ                   ; /*                                 */ 
+
+/* ****************LOGIC****************************/
+READ = RD & PSEN ;
+CSPERIPH = !(A15 & A14 & A13 & A12) ;
+
+

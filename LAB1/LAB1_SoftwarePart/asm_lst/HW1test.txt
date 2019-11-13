@@ -1,0 +1,32 @@
+       ORG $0000
+BEGIN    CLR A
+         MOV 30H,A     ; If no error,move 00 in 0x30
+         CLR C
+         MOV A,#60H    ; X
+         RLC A         ; Multiply X by 2 
+         JNC XYZ
+         MOV R0,#30H
+         MOV [R0],#02H ; Multiplication exceeds 8 bits,error code 02 at 30H
+XYZ      MOV 20H,A     ; Storing X*2 at 20H address
+         MOV B,#0AH    ; Y
+         MOV R2,A
+         CLR A
+         SUBB A,B      ; check if Y i.e divisor is 0
+         JNZ ABC
+         MOV R0,#30H
+         MOV [R0],#01H ; since divisor 0, store 01 as error code at 0x30   
+         SJMP ENDLOOP  
+ABC      CLR C
+         MOV A,R2
+         MOV R0,#0H    ; Using R0 as Quotient
+ALPHA    MOV R1,A      
+         SUBB A,B      ; Repetitive substraction for division
+         JNC BETA
+         MOV 22H,R1    ; Storing final remainder at 22H address
+         SJMP GAMMA
+BETA     INC R0        
+         SJMP ALPHA 
+GAMMA    MOV 21H,R0    ; Storing final Quotient at 21H address
+         
+ENDLOOP  SJMP  ENDLOOP
+       
