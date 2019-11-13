@@ -1,0 +1,2930 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 3.9.0 #11195 (MINGW64)
+                                      4 ;--------------------------------------------------------
+                                      5 	.module main1
+                                      6 	.optsdcc -mmcs51 --model-large
+                                      7 	
+                                      8 ;--------------------------------------------------------
+                                      9 ; Public variables in this module
+                                     10 ;--------------------------------------------------------
+                                     11 	.globl ___sdcc_heap_size
+                                     12 	.globl _main
+                                     13 	.globl _dataout
+                                     14 	.globl _free
+                                     15 	.globl _malloc
+                                     16 	.globl _printf_tiny
+                                     17 	.globl _printf
+                                     18 	.globl _TF1
+                                     19 	.globl _TR1
+                                     20 	.globl _TF0
+                                     21 	.globl _TR0
+                                     22 	.globl _IE1
+                                     23 	.globl _IT1
+                                     24 	.globl _IE0
+                                     25 	.globl _IT0
+                                     26 	.globl _SM0
+                                     27 	.globl _SM1
+                                     28 	.globl _SM2
+                                     29 	.globl _REN
+                                     30 	.globl _TB8
+                                     31 	.globl _RB8
+                                     32 	.globl _TI
+                                     33 	.globl _RI
+                                     34 	.globl _CY
+                                     35 	.globl _AC
+                                     36 	.globl _F0
+                                     37 	.globl _RS1
+                                     38 	.globl _RS0
+                                     39 	.globl _OV
+                                     40 	.globl _F1
+                                     41 	.globl _P
+                                     42 	.globl _RD
+                                     43 	.globl _WR
+                                     44 	.globl _T1
+                                     45 	.globl _T0
+                                     46 	.globl _INT1
+                                     47 	.globl _INT0
+                                     48 	.globl _TXD0
+                                     49 	.globl _TXD
+                                     50 	.globl _RXD0
+                                     51 	.globl _RXD
+                                     52 	.globl _P3_7
+                                     53 	.globl _P3_6
+                                     54 	.globl _P3_5
+                                     55 	.globl _P3_4
+                                     56 	.globl _P3_3
+                                     57 	.globl _P3_2
+                                     58 	.globl _P3_1
+                                     59 	.globl _P3_0
+                                     60 	.globl _P2_7
+                                     61 	.globl _P2_6
+                                     62 	.globl _P2_5
+                                     63 	.globl _P2_4
+                                     64 	.globl _P2_3
+                                     65 	.globl _P2_2
+                                     66 	.globl _P2_1
+                                     67 	.globl _P2_0
+                                     68 	.globl _P1_7
+                                     69 	.globl _P1_6
+                                     70 	.globl _P1_5
+                                     71 	.globl _P1_4
+                                     72 	.globl _P1_3
+                                     73 	.globl _P1_2
+                                     74 	.globl _P1_1
+                                     75 	.globl _P1_0
+                                     76 	.globl _P0_7
+                                     77 	.globl _P0_6
+                                     78 	.globl _P0_5
+                                     79 	.globl _P0_4
+                                     80 	.globl _P0_3
+                                     81 	.globl _P0_2
+                                     82 	.globl _P0_1
+                                     83 	.globl _P0_0
+                                     84 	.globl _PS
+                                     85 	.globl _PT1
+                                     86 	.globl _PX1
+                                     87 	.globl _PT0
+                                     88 	.globl _PX0
+                                     89 	.globl _EA
+                                     90 	.globl _ES
+                                     91 	.globl _ET1
+                                     92 	.globl _EX1
+                                     93 	.globl _ET0
+                                     94 	.globl _EX0
+                                     95 	.globl _BREG_F7
+                                     96 	.globl _BREG_F6
+                                     97 	.globl _BREG_F5
+                                     98 	.globl _BREG_F4
+                                     99 	.globl _BREG_F3
+                                    100 	.globl _BREG_F2
+                                    101 	.globl _BREG_F1
+                                    102 	.globl _BREG_F0
+                                    103 	.globl _TMOD
+                                    104 	.globl _TL1
+                                    105 	.globl _TL0
+                                    106 	.globl _TH1
+                                    107 	.globl _TH0
+                                    108 	.globl _TCON
+                                    109 	.globl _SP
+                                    110 	.globl _SCON
+                                    111 	.globl _SBUF0
+                                    112 	.globl _SBUF
+                                    113 	.globl _PSW
+                                    114 	.globl _PCON
+                                    115 	.globl _P3
+                                    116 	.globl _P2
+                                    117 	.globl _P1
+                                    118 	.globl _P0
+                                    119 	.globl _IP
+                                    120 	.globl _IE
+                                    121 	.globl _DP0L
+                                    122 	.globl _DPL
+                                    123 	.globl _DP0H
+                                    124 	.globl _DPH
+                                    125 	.globl _B
+                                    126 	.globl _ACC
+                                    127 	.globl _ptr
+                                    128 	.globl _buff01size
+                                    129 	.globl ___sdcc_heap
+                                    130 	.globl _takeinput
+                                    131 	.globl _getchar
+                                    132 	.globl _putchar
+                                    133 ;--------------------------------------------------------
+                                    134 ; special function registers
+                                    135 ;--------------------------------------------------------
+                                    136 	.area RSEG    (ABS,DATA)
+      000000                        137 	.org 0x0000
+                           0000E0   138 _ACC	=	0x00e0
+                           0000F0   139 _B	=	0x00f0
+                           000083   140 _DPH	=	0x0083
+                           000083   141 _DP0H	=	0x0083
+                           000082   142 _DPL	=	0x0082
+                           000082   143 _DP0L	=	0x0082
+                           0000A8   144 _IE	=	0x00a8
+                           0000B8   145 _IP	=	0x00b8
+                           000080   146 _P0	=	0x0080
+                           000090   147 _P1	=	0x0090
+                           0000A0   148 _P2	=	0x00a0
+                           0000B0   149 _P3	=	0x00b0
+                           000087   150 _PCON	=	0x0087
+                           0000D0   151 _PSW	=	0x00d0
+                           000099   152 _SBUF	=	0x0099
+                           000099   153 _SBUF0	=	0x0099
+                           000098   154 _SCON	=	0x0098
+                           000081   155 _SP	=	0x0081
+                           000088   156 _TCON	=	0x0088
+                           00008C   157 _TH0	=	0x008c
+                           00008D   158 _TH1	=	0x008d
+                           00008A   159 _TL0	=	0x008a
+                           00008B   160 _TL1	=	0x008b
+                           000089   161 _TMOD	=	0x0089
+                                    162 ;--------------------------------------------------------
+                                    163 ; special function bits
+                                    164 ;--------------------------------------------------------
+                                    165 	.area RSEG    (ABS,DATA)
+      000000                        166 	.org 0x0000
+                           0000F0   167 _BREG_F0	=	0x00f0
+                           0000F1   168 _BREG_F1	=	0x00f1
+                           0000F2   169 _BREG_F2	=	0x00f2
+                           0000F3   170 _BREG_F3	=	0x00f3
+                           0000F4   171 _BREG_F4	=	0x00f4
+                           0000F5   172 _BREG_F5	=	0x00f5
+                           0000F6   173 _BREG_F6	=	0x00f6
+                           0000F7   174 _BREG_F7	=	0x00f7
+                           0000A8   175 _EX0	=	0x00a8
+                           0000A9   176 _ET0	=	0x00a9
+                           0000AA   177 _EX1	=	0x00aa
+                           0000AB   178 _ET1	=	0x00ab
+                           0000AC   179 _ES	=	0x00ac
+                           0000AF   180 _EA	=	0x00af
+                           0000B8   181 _PX0	=	0x00b8
+                           0000B9   182 _PT0	=	0x00b9
+                           0000BA   183 _PX1	=	0x00ba
+                           0000BB   184 _PT1	=	0x00bb
+                           0000BC   185 _PS	=	0x00bc
+                           000080   186 _P0_0	=	0x0080
+                           000081   187 _P0_1	=	0x0081
+                           000082   188 _P0_2	=	0x0082
+                           000083   189 _P0_3	=	0x0083
+                           000084   190 _P0_4	=	0x0084
+                           000085   191 _P0_5	=	0x0085
+                           000086   192 _P0_6	=	0x0086
+                           000087   193 _P0_7	=	0x0087
+                           000090   194 _P1_0	=	0x0090
+                           000091   195 _P1_1	=	0x0091
+                           000092   196 _P1_2	=	0x0092
+                           000093   197 _P1_3	=	0x0093
+                           000094   198 _P1_4	=	0x0094
+                           000095   199 _P1_5	=	0x0095
+                           000096   200 _P1_6	=	0x0096
+                           000097   201 _P1_7	=	0x0097
+                           0000A0   202 _P2_0	=	0x00a0
+                           0000A1   203 _P2_1	=	0x00a1
+                           0000A2   204 _P2_2	=	0x00a2
+                           0000A3   205 _P2_3	=	0x00a3
+                           0000A4   206 _P2_4	=	0x00a4
+                           0000A5   207 _P2_5	=	0x00a5
+                           0000A6   208 _P2_6	=	0x00a6
+                           0000A7   209 _P2_7	=	0x00a7
+                           0000B0   210 _P3_0	=	0x00b0
+                           0000B1   211 _P3_1	=	0x00b1
+                           0000B2   212 _P3_2	=	0x00b2
+                           0000B3   213 _P3_3	=	0x00b3
+                           0000B4   214 _P3_4	=	0x00b4
+                           0000B5   215 _P3_5	=	0x00b5
+                           0000B6   216 _P3_6	=	0x00b6
+                           0000B7   217 _P3_7	=	0x00b7
+                           0000B0   218 _RXD	=	0x00b0
+                           0000B0   219 _RXD0	=	0x00b0
+                           0000B1   220 _TXD	=	0x00b1
+                           0000B1   221 _TXD0	=	0x00b1
+                           0000B2   222 _INT0	=	0x00b2
+                           0000B3   223 _INT1	=	0x00b3
+                           0000B4   224 _T0	=	0x00b4
+                           0000B5   225 _T1	=	0x00b5
+                           0000B6   226 _WR	=	0x00b6
+                           0000B7   227 _RD	=	0x00b7
+                           0000D0   228 _P	=	0x00d0
+                           0000D1   229 _F1	=	0x00d1
+                           0000D2   230 _OV	=	0x00d2
+                           0000D3   231 _RS0	=	0x00d3
+                           0000D4   232 _RS1	=	0x00d4
+                           0000D5   233 _F0	=	0x00d5
+                           0000D6   234 _AC	=	0x00d6
+                           0000D7   235 _CY	=	0x00d7
+                           000098   236 _RI	=	0x0098
+                           000099   237 _TI	=	0x0099
+                           00009A   238 _RB8	=	0x009a
+                           00009B   239 _TB8	=	0x009b
+                           00009C   240 _REN	=	0x009c
+                           00009D   241 _SM2	=	0x009d
+                           00009E   242 _SM1	=	0x009e
+                           00009F   243 _SM0	=	0x009f
+                           000088   244 _IT0	=	0x0088
+                           000089   245 _IE0	=	0x0089
+                           00008A   246 _IT1	=	0x008a
+                           00008B   247 _IE1	=	0x008b
+                           00008C   248 _TR0	=	0x008c
+                           00008D   249 _TF0	=	0x008d
+                           00008E   250 _TR1	=	0x008e
+                           00008F   251 _TF1	=	0x008f
+                                    252 ;--------------------------------------------------------
+                                    253 ; overlayable register banks
+                                    254 ;--------------------------------------------------------
+                                    255 	.area REG_BANK_0	(REL,OVR,DATA)
+      000000                        256 	.ds 8
+                                    257 ;--------------------------------------------------------
+                                    258 ; internal ram data
+                                    259 ;--------------------------------------------------------
+                                    260 	.area DSEG    (DATA)
+      000000                        261 _main_sloc0_1_0:
+      000000                        262 	.ds 3
+      000003                        263 _main_sloc1_1_0:
+      000003                        264 	.ds 2
+      000005                        265 _main_sloc2_1_0:
+      000005                        266 	.ds 3
+      000008                        267 _main_sloc3_1_0:
+      000008                        268 	.ds 2
+      00000A                        269 _main_sloc4_1_0:
+      00000A                        270 	.ds 2
+      00000C                        271 _main_sloc5_1_0:
+      00000C                        272 	.ds 2
+                                    273 ;--------------------------------------------------------
+                                    274 ; overlayable items in internal ram 
+                                    275 ;--------------------------------------------------------
+                                    276 ;--------------------------------------------------------
+                                    277 ; Stack segment in internal ram 
+                                    278 ;--------------------------------------------------------
+                                    279 	.area	SSEG
+      000000                        280 __start__stack:
+      000000                        281 	.ds	1
+                                    282 
+                                    283 ;--------------------------------------------------------
+                                    284 ; indirectly addressable internal ram data
+                                    285 ;--------------------------------------------------------
+                                    286 	.area ISEG    (DATA)
+                                    287 ;--------------------------------------------------------
+                                    288 ; absolute internal ram data
+                                    289 ;--------------------------------------------------------
+                                    290 	.area IABS    (ABS,DATA)
+                                    291 	.area IABS    (ABS,DATA)
+                                    292 ;--------------------------------------------------------
+                                    293 ; bit data
+                                    294 ;--------------------------------------------------------
+                                    295 	.area BSEG    (BIT)
+                                    296 ;--------------------------------------------------------
+                                    297 ; paged external ram data
+                                    298 ;--------------------------------------------------------
+                                    299 	.area PSEG    (PAG,XDATA)
+                                    300 ;--------------------------------------------------------
+                                    301 ; external ram data
+                                    302 ;--------------------------------------------------------
+                                    303 	.area XSEG    (XDATA)
+      000000                        304 ___sdcc_heap::
+      000000                        305 	.ds 4000
+      000FA0                        306 _dataout_x_65536_62:
+      000FA0                        307 	.ds 1
+      000FA1                        308 _buff01size::
+      000FA1                        309 	.ds 2
+      000FA3                        310 _main_buffer_131072_67:
+      000FA3                        311 	.ds 60
+      000FDF                        312 _main_buffnewcount_131072_67:
+      000FDF                        313 	.ds 2
+      000FE1                        314 _main_totalstoragecount_131072_67:
+      000FE1                        315 	.ds 2
+      000FE3                        316 _main_startaddr_131072_67:
+      000FE3                        317 	.ds 40
+      00100B                        318 _main_endaddr_131072_67:
+      00100B                        319 	.ds 40
+      001033                        320 _main_buffersizes_131072_67:
+      001033                        321 	.ds 40
+      00105B                        322 _main_storagecountall_131072_67:
+      00105B                        323 	.ds 40
+      001083                        324 _main_totalcharafterQ_131072_67:
+      001083                        325 	.ds 2
+      001085                        326 _main_freespacesbuff_131072_67:
+      001085                        327 	.ds 40
+      0010AD                        328 _takeinput_number_65537_103:
+      0010AD                        329 	.ds 2
+      0010AF                        330 _putchar_b_65536_109:
+      0010AF                        331 	.ds 2
+                                    332 ;--------------------------------------------------------
+                                    333 ; absolute external ram data
+                                    334 ;--------------------------------------------------------
+                                    335 	.area XABS    (ABS,XDATA)
+                                    336 ;--------------------------------------------------------
+                                    337 ; external initialized ram data
+                                    338 ;--------------------------------------------------------
+                                    339 	.area XISEG   (XDATA)
+      000000                        340 _ptr::
+      000000                        341 	.ds 2
+                                    342 	.area HOME    (CODE)
+                                    343 	.area GSINIT0 (CODE)
+                                    344 	.area GSINIT1 (CODE)
+                                    345 	.area GSINIT2 (CODE)
+                                    346 	.area GSINIT3 (CODE)
+                                    347 	.area GSINIT4 (CODE)
+                                    348 	.area GSINIT5 (CODE)
+                                    349 	.area GSINIT  (CODE)
+                                    350 	.area GSFINAL (CODE)
+                                    351 	.area CSEG    (CODE)
+                                    352 ;--------------------------------------------------------
+                                    353 ; interrupt vector 
+                                    354 ;--------------------------------------------------------
+                                    355 	.area HOME    (CODE)
+      000000                        356 __interrupt_vect:
+      000000 02r00r00         [24]  357 	ljmp	__sdcc_gsinit_startup
+                                    358 ;--------------------------------------------------------
+                                    359 ; global & static initialisations
+                                    360 ;--------------------------------------------------------
+                                    361 	.area HOME    (CODE)
+                                    362 	.area GSINIT  (CODE)
+                                    363 	.area GSFINAL (CODE)
+                                    364 	.area GSINIT  (CODE)
+                                    365 	.globl __sdcc_gsinit_startup
+                                    366 	.globl __sdcc_program_startup
+                                    367 	.globl __start__stack
+                                    368 	.globl __mcs51_genXINIT
+                                    369 	.globl __mcs51_genXRAMCLEAR
+                                    370 	.globl __mcs51_genRAMCLEAR
+                                    371 	.area GSFINAL (CODE)
+      000000 02r00r03         [24]  372 	ljmp	__sdcc_program_startup
+                                    373 ;--------------------------------------------------------
+                                    374 ; Home
+                                    375 ;--------------------------------------------------------
+                                    376 	.area HOME    (CODE)
+                                    377 	.area HOME    (CODE)
+      000003                        378 __sdcc_program_startup:
+      000003 02r00r12         [24]  379 	ljmp	_main
+                                    380 ;	return from main will return to caller
+                                    381 ;--------------------------------------------------------
+                                    382 ; code
+                                    383 ;--------------------------------------------------------
+                                    384 	.area CSEG    (CODE)
+                                    385 ;------------------------------------------------------------
+                                    386 ;Allocation info for local variables in function 'dataout'
+                                    387 ;------------------------------------------------------------
+                                    388 ;x                         Allocated with name '_dataout_x_65536_62'
+                                    389 ;ptr                       Allocated with name '_dataout_ptr_65536_63'
+                                    390 ;------------------------------------------------------------
+                                    391 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:25: void dataout(uint8_t x)
+                                    392 ;	-----------------------------------------
+                                    393 ;	 function dataout
+                                    394 ;	-----------------------------------------
+      000000                        395 _dataout:
+                           000007   396 	ar7 = 0x07
+                           000006   397 	ar6 = 0x06
+                           000005   398 	ar5 = 0x05
+                           000004   399 	ar4 = 0x04
+                           000003   400 	ar3 = 0x03
+                           000002   401 	ar2 = 0x02
+                           000001   402 	ar1 = 0x01
+                           000000   403 	ar0 = 0x00
+      000000 E5 82            [12]  404 	mov	a,dpl
+      000002 90r0FrA0         [24]  405 	mov	dptr,#_dataout_x_65536_62
+      000005 F0               [24]  406 	movx	@dptr,a
+                                    407 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:29: *ptr = (x);
+      000006 E0               [24]  408 	movx	a,@dptr
+      000007 FF               [12]  409 	mov	r7,a
+      000008 90 FF FF         [24]  410 	mov	dptr,#0xffff
+      00000B 75 F0 00         [24]  411 	mov	b,#0x00
+      00000E EF               [12]  412 	mov	a,r7
+                                    413 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:30: }
+      00000F 02r00r00         [24]  414 	ljmp	__gptrput
+                                    415 ;------------------------------------------------------------
+                                    416 ;Allocation info for local variables in function 'main'
+                                    417 ;------------------------------------------------------------
+                                    418 ;sloc0                     Allocated with name '_main_sloc0_1_0'
+                                    419 ;sloc1                     Allocated with name '_main_sloc1_1_0'
+                                    420 ;sloc2                     Allocated with name '_main_sloc2_1_0'
+                                    421 ;sloc3                     Allocated with name '_main_sloc3_1_0'
+                                    422 ;sloc4                     Allocated with name '_main_sloc4_1_0'
+                                    423 ;sloc5                     Allocated with name '_main_sloc5_1_0'
+                                    424 ;buffer                    Allocated with name '_main_buffer_131072_67'
+                                    425 ;buffnewcount              Allocated with name '_main_buffnewcount_131072_67'
+                                    426 ;totalcharcount            Allocated with name '_main_totalcharcount_131072_67'
+                                    427 ;totalstoragecount         Allocated with name '_main_totalstoragecount_131072_67'
+                                    428 ;startaddr                 Allocated with name '_main_startaddr_131072_67'
+                                    429 ;endaddr                   Allocated with name '_main_endaddr_131072_67'
+                                    430 ;buffersizes               Allocated with name '_main_buffersizes_131072_67'
+                                    431 ;storagecountall           Allocated with name '_main_storagecountall_131072_67'
+                                    432 ;totalcharafterQ           Allocated with name '_main_totalcharafterQ_131072_67'
+                                    433 ;freespacesbuff            Allocated with name '_main_freespacesbuff_131072_67'
+                                    434 ;m                         Allocated with name '_main_m_196609_69'
+                                    435 ;takechar                  Allocated with name '_main_takechar_196609_75'
+                                    436 ;n                         Allocated with name '_main_n_262146_79'
+                                    437 ;buffno                    Allocated with name '_main_buffno_262146_82'
+                                    438 ;d                         Allocated with name '_main_d_262146_86'
+                                    439 ;e                         Allocated with name '_main_e_262146_86'
+                                    440 ;g                         Allocated with name '_main_g_262146_94'
+                                    441 ;k                         Allocated with name '_main_k_262146_99'
+                                    442 ;------------------------------------------------------------
+                                    443 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:37: void main(void)
+                                    444 ;	-----------------------------------------
+                                    445 ;	 function main
+                                    446 ;	-----------------------------------------
+      000012                        447 _main:
+                                    448 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:47: uint16_t totalstoragecount = 0;
+      000012 90r0FrE1         [24]  449 	mov	dptr,#_main_totalstoragecount_131072_67
+      000015 E4               [12]  450 	clr	a
+      000016 F0               [24]  451 	movx	@dptr,a
+      000017 A3               [24]  452 	inc	dptr
+      000018 F0               [24]  453 	movx	@dptr,a
+                                    454 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:52: uint16_t totalcharafterQ =0;
+      000019 90r10r83         [24]  455 	mov	dptr,#_main_totalcharafterQ_131072_67
+      00001C F0               [24]  456 	movx	@dptr,a
+      00001D A3               [24]  457 	inc	dptr
+      00001E F0               [24]  458 	movx	@dptr,a
+                                    459 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:61: while(1)
+      00001F 7E 00            [12]  460 	mov	r6,#0x00
+      000021 7F 00            [12]  461 	mov	r7,#0x00
+      000023                        462 00113$:
+                                    463 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:64: printf("### Enter a valid buffer size for buffer 0 and 1 ###");
+      000023 C0 07            [24]  464 	push	ar7
+      000025 C0 06            [24]  465 	push	ar6
+      000027 74r02            [12]  466 	mov	a,#___str_0
+      000029 C0 E0            [24]  467 	push	acc
+      00002B 74s00            [12]  468 	mov	a,#(___str_0 >> 8)
+      00002D C0 E0            [24]  469 	push	acc
+      00002F 74 80            [12]  470 	mov	a,#0x80
+      000031 C0 E0            [24]  471 	push	acc
+      000033 12r00r00         [24]  472 	lcall	_printf
+      000036 15 81            [12]  473 	dec	sp
+      000038 15 81            [12]  474 	dec	sp
+      00003A 15 81            [12]  475 	dec	sp
+                                    476 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:65: uint16_t m= takeinput();
+      00003C 12r0Br40         [24]  477 	lcall	_takeinput
+      00003F AC 82            [24]  478 	mov	r4,dpl
+      000041 AD 83            [24]  479 	mov	r5,dph
+      000043 D0 06            [24]  480 	pop	ar6
+      000045 D0 07            [24]  481 	pop	ar7
+                                    482 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:66: if (m>=32 && m<=3200 && m%16==0)
+      000047 8C 02            [24]  483 	mov	ar2,r4
+      000049 8D 03            [24]  484 	mov	ar3,r5
+      00004B C3               [12]  485 	clr	c
+      00004C EA               [12]  486 	mov	a,r2
+      00004D 94 20            [12]  487 	subb	a,#0x20
+      00004F EB               [12]  488 	mov	a,r3
+      000050 94 00            [12]  489 	subb	a,#0x00
+      000052 40 40            [24]  490 	jc	00102$
+      000054 8C 02            [24]  491 	mov	ar2,r4
+      000056 8D 03            [24]  492 	mov	ar3,r5
+      000058 C3               [12]  493 	clr	c
+      000059 74 80            [12]  494 	mov	a,#0x80
+      00005B 9A               [12]  495 	subb	a,r2
+      00005C 74 0C            [12]  496 	mov	a,#0x0c
+      00005E 9B               [12]  497 	subb	a,r3
+      00005F 40 33            [24]  498 	jc	00102$
+      000061 8C 02            [24]  499 	mov	ar2,r4
+      000063 8D 03            [24]  500 	mov	ar3,r5
+      000065 EA               [12]  501 	mov	a,r2
+      000066 54 0F            [12]  502 	anl	a,#0x0f
+      000068 70 2A            [24]  503 	jnz	00102$
+                                    504 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:69: buffer[0] = (uint8_t *)malloc(m);
+      00006A 8C 82            [24]  505 	mov	dpl,r4
+      00006C 8D 83            [24]  506 	mov	dph,r5
+      00006E C0 07            [24]  507 	push	ar7
+      000070 C0 06            [24]  508 	push	ar6
+      000072 C0 05            [24]  509 	push	ar5
+      000074 C0 04            [24]  510 	push	ar4
+      000076 12r00r00         [24]  511 	lcall	_malloc
+      000079 AA 82            [24]  512 	mov	r2,dpl
+      00007B AB 83            [24]  513 	mov	r3,dph
+      00007D D0 04            [24]  514 	pop	ar4
+      00007F D0 05            [24]  515 	pop	ar5
+      000081 D0 06            [24]  516 	pop	ar6
+      000083 D0 07            [24]  517 	pop	ar7
+      000085 8B 01            [24]  518 	mov	ar1,r3
+      000087 7B 00            [12]  519 	mov	r3,#0x00
+      000089 90r0FrA3         [24]  520 	mov	dptr,#_main_buffer_131072_67
+      00008C EA               [12]  521 	mov	a,r2
+      00008D F0               [24]  522 	movx	@dptr,a
+      00008E E9               [12]  523 	mov	a,r1
+      00008F A3               [24]  524 	inc	dptr
+      000090 F0               [24]  525 	movx	@dptr,a
+      000091 EB               [12]  526 	mov	a,r3
+      000092 A3               [24]  527 	inc	dptr
+      000093 F0               [24]  528 	movx	@dptr,a
+      000094                        529 00102$:
+                                    530 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:78: if (buffer[0] == 0)
+      000094 90r0FrA3         [24]  531 	mov	dptr,#_main_buffer_131072_67
+      000097 E0               [24]  532 	movx	a,@dptr
+      000098 F9               [12]  533 	mov	r1,a
+      000099 A3               [24]  534 	inc	dptr
+      00009A E0               [24]  535 	movx	a,@dptr
+      00009B FA               [12]  536 	mov	r2,a
+      00009C A3               [24]  537 	inc	dptr
+      00009D E0               [24]  538 	movx	a,@dptr
+      00009E E9               [12]  539 	mov	a,r1
+      00009F 4A               [12]  540 	orl	a,r2
+      0000A0 70 22            [24]  541 	jnz	00106$
+                                    542 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:79: printf_tiny("\n \rMalloc buffer0 failed\n\r"); //j,hgtjkygk
+      0000A2 C0 07            [24]  543 	push	ar7
+      0000A4 C0 06            [24]  544 	push	ar6
+      0000A6 C0 05            [24]  545 	push	ar5
+      0000A8 C0 04            [24]  546 	push	ar4
+      0000AA 74r37            [12]  547 	mov	a,#___str_1
+      0000AC C0 E0            [24]  548 	push	acc
+      0000AE 74s00            [12]  549 	mov	a,#(___str_1 >> 8)
+      0000B0 C0 E0            [24]  550 	push	acc
+      0000B2 12r00r00         [24]  551 	lcall	_printf_tiny
+      0000B5 15 81            [12]  552 	dec	sp
+      0000B7 15 81            [12]  553 	dec	sp
+      0000B9 D0 04            [24]  554 	pop	ar4
+      0000BB D0 05            [24]  555 	pop	ar5
+      0000BD D0 06            [24]  556 	pop	ar6
+      0000BF D0 07            [24]  557 	pop	ar7
+      0000C1 02r01r56         [24]  558 	ljmp	00107$
+      0000C4                        559 00106$:
+                                    560 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:82: printf_tiny("\n \rMalloc buffer0 passed\n\r");
+      0000C4 C0 07            [24]  561 	push	ar7
+      0000C6 C0 06            [24]  562 	push	ar6
+      0000C8 C0 05            [24]  563 	push	ar5
+      0000CA C0 04            [24]  564 	push	ar4
+      0000CC 74r52            [12]  565 	mov	a,#___str_2
+      0000CE C0 E0            [24]  566 	push	acc
+      0000D0 74s00            [12]  567 	mov	a,#(___str_2 >> 8)
+      0000D2 C0 E0            [24]  568 	push	acc
+      0000D4 12r00r00         [24]  569 	lcall	_printf_tiny
+      0000D7 15 81            [12]  570 	dec	sp
+      0000D9 15 81            [12]  571 	dec	sp
+      0000DB D0 04            [24]  572 	pop	ar4
+      0000DD D0 05            [24]  573 	pop	ar5
+      0000DF D0 06            [24]  574 	pop	ar6
+      0000E1 D0 07            [24]  575 	pop	ar7
+                                    576 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:84: startaddr[0]= (int)buffer[0];
+      0000E3 90r0FrA3         [24]  577 	mov	dptr,#_main_buffer_131072_67
+      0000E6 E0               [24]  578 	movx	a,@dptr
+      0000E7 FA               [12]  579 	mov	r2,a
+      0000E8 A3               [24]  580 	inc	dptr
+      0000E9 E0               [24]  581 	movx	a,@dptr
+      0000EA FB               [12]  582 	mov	r3,a
+      0000EB 90r0FrE3         [24]  583 	mov	dptr,#_main_startaddr_131072_67
+      0000EE EA               [12]  584 	mov	a,r2
+      0000EF F0               [24]  585 	movx	@dptr,a
+      0000F0 EB               [12]  586 	mov	a,r3
+      0000F1 A3               [24]  587 	inc	dptr
+      0000F2 F0               [24]  588 	movx	@dptr,a
+                                    589 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:85: endaddr[0]= (int)(buffer[0]+ m);
+      0000F3 90r0FrA3         [24]  590 	mov	dptr,#_main_buffer_131072_67
+      0000F6 E0               [24]  591 	movx	a,@dptr
+      0000F7 F9               [12]  592 	mov	r1,a
+      0000F8 A3               [24]  593 	inc	dptr
+      0000F9 E0               [24]  594 	movx	a,@dptr
+      0000FA FA               [12]  595 	mov	r2,a
+      0000FB A3               [24]  596 	inc	dptr
+      0000FC E0               [24]  597 	movx	a,@dptr
+      0000FD EC               [12]  598 	mov	a,r4
+      0000FE 29               [12]  599 	add	a,r1
+      0000FF F9               [12]  600 	mov	r1,a
+      000100 ED               [12]  601 	mov	a,r5
+      000101 3A               [12]  602 	addc	a,r2
+      000102 FA               [12]  603 	mov	r2,a
+      000103 90r10r0B         [24]  604 	mov	dptr,#_main_endaddr_131072_67
+      000106 E9               [12]  605 	mov	a,r1
+      000107 F0               [24]  606 	movx	@dptr,a
+      000108 EA               [12]  607 	mov	a,r2
+      000109 A3               [24]  608 	inc	dptr
+      00010A F0               [24]  609 	movx	@dptr,a
+                                    610 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:86: buffersizes[0]= m;
+      00010B 90r10r33         [24]  611 	mov	dptr,#_main_buffersizes_131072_67
+      00010E EC               [12]  612 	mov	a,r4
+      00010F F0               [24]  613 	movx	@dptr,a
+      000110 ED               [12]  614 	mov	a,r5
+      000111 A3               [24]  615 	inc	dptr
+      000112 F0               [24]  616 	movx	@dptr,a
+                                    617 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:87: printf("\n \rBuffer 0 created at :0X0%x \n \r",startaddr[buffnewcount]);
+      000113 EE               [12]  618 	mov	a,r6
+      000114 2E               [12]  619 	add	a,r6
+      000115 FA               [12]  620 	mov	r2,a
+      000116 EF               [12]  621 	mov	a,r7
+      000117 33               [12]  622 	rlc	a
+      000118 FB               [12]  623 	mov	r3,a
+      000119 EA               [12]  624 	mov	a,r2
+      00011A 24rE3            [12]  625 	add	a,#_main_startaddr_131072_67
+      00011C F5 82            [12]  626 	mov	dpl,a
+      00011E EB               [12]  627 	mov	a,r3
+      00011F 34s0F            [12]  628 	addc	a,#(_main_startaddr_131072_67 >> 8)
+      000121 F5 83            [12]  629 	mov	dph,a
+      000123 E0               [24]  630 	movx	a,@dptr
+      000124 FA               [12]  631 	mov	r2,a
+      000125 A3               [24]  632 	inc	dptr
+      000126 E0               [24]  633 	movx	a,@dptr
+      000127 FB               [12]  634 	mov	r3,a
+      000128 C0 07            [24]  635 	push	ar7
+      00012A C0 06            [24]  636 	push	ar6
+      00012C C0 05            [24]  637 	push	ar5
+      00012E C0 04            [24]  638 	push	ar4
+      000130 C0 02            [24]  639 	push	ar2
+      000132 C0 03            [24]  640 	push	ar3
+      000134 74r6D            [12]  641 	mov	a,#___str_3
+      000136 C0 E0            [24]  642 	push	acc
+      000138 74s00            [12]  643 	mov	a,#(___str_3 >> 8)
+      00013A C0 E0            [24]  644 	push	acc
+      00013C 74 80            [12]  645 	mov	a,#0x80
+      00013E C0 E0            [24]  646 	push	acc
+      000140 12r00r00         [24]  647 	lcall	_printf
+      000143 E5 81            [12]  648 	mov	a,sp
+      000145 24 FB            [12]  649 	add	a,#0xfb
+      000147 F5 81            [12]  650 	mov	sp,a
+      000149 D0 04            [24]  651 	pop	ar4
+      00014B D0 05            [24]  652 	pop	ar5
+      00014D D0 06            [24]  653 	pop	ar6
+      00014F D0 07            [24]  654 	pop	ar7
+                                    655 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:88: buffnewcount++;
+      000151 0E               [12]  656 	inc	r6
+      000152 BE 00 01         [24]  657 	cjne	r6,#0x00,00307$
+      000155 0F               [12]  658 	inc	r7
+      000156                        659 00307$:
+      000156                        660 00107$:
+                                    661 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:91: if (m<1980 && buffer[0] !=0)
+      000156 8C 02            [24]  662 	mov	ar2,r4
+      000158 8D 03            [24]  663 	mov	ar3,r5
+      00015A C3               [12]  664 	clr	c
+      00015B EA               [12]  665 	mov	a,r2
+      00015C 94 BC            [12]  666 	subb	a,#0xbc
+      00015E EB               [12]  667 	mov	a,r3
+      00015F 94 07            [12]  668 	subb	a,#0x07
+      000161 40 03            [24]  669 	jc	00308$
+      000163 02r02r4D         [24]  670 	ljmp	00109$
+      000166                        671 00308$:
+      000166 90r0FrA3         [24]  672 	mov	dptr,#_main_buffer_131072_67
+      000169 E0               [24]  673 	movx	a,@dptr
+      00016A F9               [12]  674 	mov	r1,a
+      00016B A3               [24]  675 	inc	dptr
+      00016C E0               [24]  676 	movx	a,@dptr
+      00016D FA               [12]  677 	mov	r2,a
+      00016E A3               [24]  678 	inc	dptr
+      00016F E0               [24]  679 	movx	a,@dptr
+      000170 FB               [12]  680 	mov	r3,a
+      000171 E9               [12]  681 	mov	a,r1
+      000172 4A               [12]  682 	orl	a,r2
+      000173 70 03            [24]  683 	jnz	00309$
+      000175 02r02r4D         [24]  684 	ljmp	00109$
+      000178                        685 00309$:
+                                    686 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:93: buffer[1] = (uint8_t *)malloc(m);
+      000178 8C 82            [24]  687 	mov	dpl,r4
+      00017A 8D 83            [24]  688 	mov	dph,r5
+      00017C C0 07            [24]  689 	push	ar7
+      00017E C0 06            [24]  690 	push	ar6
+      000180 C0 05            [24]  691 	push	ar5
+      000182 C0 04            [24]  692 	push	ar4
+      000184 12r00r00         [24]  693 	lcall	_malloc
+      000187 AA 82            [24]  694 	mov	r2,dpl
+      000189 AB 83            [24]  695 	mov	r3,dph
+      00018B D0 04            [24]  696 	pop	ar4
+      00018D D0 05            [24]  697 	pop	ar5
+      00018F 8A*00            [24]  698 	mov	_main_sloc0_1_0,r2
+      000191 8B*01            [24]  699 	mov	(_main_sloc0_1_0 + 1),r3
+      000193 75*02 00         [24]  700 	mov	(_main_sloc0_1_0 + 2),#0x00
+      000196 90r0FrA6         [24]  701 	mov	dptr,#(_main_buffer_131072_67 + 0x0003)
+      000199 E5*00            [12]  702 	mov	a,_main_sloc0_1_0
+      00019B F0               [24]  703 	movx	@dptr,a
+      00019C E5*01            [12]  704 	mov	a,(_main_sloc0_1_0 + 1)
+      00019E A3               [24]  705 	inc	dptr
+      00019F F0               [24]  706 	movx	@dptr,a
+      0001A0 E5*02            [12]  707 	mov	a,(_main_sloc0_1_0 + 2)
+      0001A2 A3               [24]  708 	inc	dptr
+      0001A3 F0               [24]  709 	movx	@dptr,a
+                                    710 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:94: startaddr[1]= (int)buffer[1];
+      0001A4 A8*00            [24]  711 	mov	r0,_main_sloc0_1_0
+      0001A6 AB*01            [24]  712 	mov	r3,(_main_sloc0_1_0 + 1)
+      0001A8 90r0FrE5         [24]  713 	mov	dptr,#(_main_startaddr_131072_67 + 0x0002)
+      0001AB E8               [12]  714 	mov	a,r0
+      0001AC F0               [24]  715 	movx	@dptr,a
+      0001AD EB               [12]  716 	mov	a,r3
+      0001AE A3               [24]  717 	inc	dptr
+      0001AF F0               [24]  718 	movx	@dptr,a
+                                    719 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:95: endaddr[1]= (int)(buffer[1]+ m);
+      0001B0 EC               [12]  720 	mov	a,r4
+      0001B1 25*00            [12]  721 	add	a,_main_sloc0_1_0
+      0001B3 F9               [12]  722 	mov	r1,a
+      0001B4 ED               [12]  723 	mov	a,r5
+      0001B5 35*01            [12]  724 	addc	a,(_main_sloc0_1_0 + 1)
+      0001B7 FA               [12]  725 	mov	r2,a
+      0001B8 90r10r0D         [24]  726 	mov	dptr,#(_main_endaddr_131072_67 + 0x0002)
+      0001BB E9               [12]  727 	mov	a,r1
+      0001BC F0               [24]  728 	movx	@dptr,a
+      0001BD EA               [12]  729 	mov	a,r2
+      0001BE A3               [24]  730 	inc	dptr
+      0001BF F0               [24]  731 	movx	@dptr,a
+                                    732 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:96: buffersizes[1]= m;
+      0001C0 90r10r35         [24]  733 	mov	dptr,#(_main_buffersizes_131072_67 + 0x0002)
+      0001C3 EC               [12]  734 	mov	a,r4
+      0001C4 F0               [24]  735 	movx	@dptr,a
+      0001C5 ED               [12]  736 	mov	a,r5
+      0001C6 A3               [24]  737 	inc	dptr
+      0001C7 F0               [24]  738 	movx	@dptr,a
+                                    739 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:97: buff01size=m;
+      0001C8 90r0FrA1         [24]  740 	mov	dptr,#_buff01size
+      0001CB EC               [12]  741 	mov	a,r4
+      0001CC F0               [24]  742 	movx	@dptr,a
+      0001CD ED               [12]  743 	mov	a,r5
+      0001CE A3               [24]  744 	inc	dptr
+      0001CF F0               [24]  745 	movx	@dptr,a
+                                    746 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:98: printf_tiny("\n \rMalloc buffer1 passed \n \r");
+      0001D0 74r8F            [12]  747 	mov	a,#___str_4
+      0001D2 C0 E0            [24]  748 	push	acc
+      0001D4 74s00            [12]  749 	mov	a,#(___str_4 >> 8)
+      0001D6 C0 E0            [24]  750 	push	acc
+      0001D8 12r00r00         [24]  751 	lcall	_printf_tiny
+      0001DB 15 81            [12]  752 	dec	sp
+      0001DD 15 81            [12]  753 	dec	sp
+      0001DF D0 06            [24]  754 	pop	ar6
+      0001E1 D0 07            [24]  755 	pop	ar7
+                                    756 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:99: printf("\n \rBuffer 1 created at : :0X0%x \n \r",startaddr[buffnewcount]);
+      0001E3 EE               [12]  757 	mov	a,r6
+      0001E4 2E               [12]  758 	add	a,r6
+      0001E5 FC               [12]  759 	mov	r4,a
+      0001E6 EF               [12]  760 	mov	a,r7
+      0001E7 33               [12]  761 	rlc	a
+      0001E8 FD               [12]  762 	mov	r5,a
+      0001E9 EC               [12]  763 	mov	a,r4
+      0001EA 24rE3            [12]  764 	add	a,#_main_startaddr_131072_67
+      0001EC F5 82            [12]  765 	mov	dpl,a
+      0001EE ED               [12]  766 	mov	a,r5
+      0001EF 34s0F            [12]  767 	addc	a,#(_main_startaddr_131072_67 >> 8)
+      0001F1 F5 83            [12]  768 	mov	dph,a
+      0001F3 E0               [24]  769 	movx	a,@dptr
+      0001F4 FC               [12]  770 	mov	r4,a
+      0001F5 A3               [24]  771 	inc	dptr
+      0001F6 E0               [24]  772 	movx	a,@dptr
+      0001F7 FD               [12]  773 	mov	r5,a
+      0001F8 C0 07            [24]  774 	push	ar7
+      0001FA C0 06            [24]  775 	push	ar6
+      0001FC C0 04            [24]  776 	push	ar4
+      0001FE C0 05            [24]  777 	push	ar5
+      000200 74rAC            [12]  778 	mov	a,#___str_5
+      000202 C0 E0            [24]  779 	push	acc
+      000204 74s00            [12]  780 	mov	a,#(___str_5 >> 8)
+      000206 C0 E0            [24]  781 	push	acc
+      000208 74 80            [12]  782 	mov	a,#0x80
+      00020A C0 E0            [24]  783 	push	acc
+      00020C 12r00r00         [24]  784 	lcall	_printf
+      00020F E5 81            [12]  785 	mov	a,sp
+      000211 24 FB            [12]  786 	add	a,#0xfb
+      000213 F5 81            [12]  787 	mov	sp,a
+      000215 D0 06            [24]  788 	pop	ar6
+      000217 D0 07            [24]  789 	pop	ar7
+                                    790 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:100: buffnewcount++;
+      000219 90r0FrDF         [24]  791 	mov	dptr,#_main_buffnewcount_131072_67
+      00021C 74 01            [12]  792 	mov	a,#0x01
+      00021E 2E               [12]  793 	add	a,r6
+      00021F F0               [24]  794 	movx	@dptr,a
+      000220 E4               [12]  795 	clr	a
+      000221 3F               [12]  796 	addc	a,r7
+      000222 A3               [24]  797 	inc	dptr
+      000223 F0               [24]  798 	movx	@dptr,a
+                                    799 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:101: storagecountall[0]=0;
+      000224 90r10r5B         [24]  800 	mov	dptr,#_main_storagecountall_131072_67
+      000227 E4               [12]  801 	clr	a
+      000228 F0               [24]  802 	movx	@dptr,a
+      000229 A3               [24]  803 	inc	dptr
+      00022A F0               [24]  804 	movx	@dptr,a
+                                    805 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:102: freespacesbuff[0]=buff01size;
+      00022B 90r0FrA1         [24]  806 	mov	dptr,#_buff01size
+      00022E E0               [24]  807 	movx	a,@dptr
+      00022F FC               [12]  808 	mov	r4,a
+      000230 A3               [24]  809 	inc	dptr
+      000231 E0               [24]  810 	movx	a,@dptr
+      000232 FD               [12]  811 	mov	r5,a
+      000233 90r10r85         [24]  812 	mov	dptr,#_main_freespacesbuff_131072_67
+      000236 EC               [12]  813 	mov	a,r4
+      000237 F0               [24]  814 	movx	@dptr,a
+      000238 ED               [12]  815 	mov	a,r5
+      000239 A3               [24]  816 	inc	dptr
+      00023A F0               [24]  817 	movx	@dptr,a
+                                    818 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:103: freespacesbuff[1]= buff01size;
+      00023B 90r0FrA1         [24]  819 	mov	dptr,#_buff01size
+      00023E E0               [24]  820 	movx	a,@dptr
+      00023F FC               [12]  821 	mov	r4,a
+      000240 A3               [24]  822 	inc	dptr
+      000241 E0               [24]  823 	movx	a,@dptr
+      000242 FD               [12]  824 	mov	r5,a
+      000243 90r10r87         [24]  825 	mov	dptr,#(_main_freespacesbuff_131072_67 + 0x0002)
+      000246 EC               [12]  826 	mov	a,r4
+      000247 F0               [24]  827 	movx	@dptr,a
+      000248 ED               [12]  828 	mov	a,r5
+      000249 A3               [24]  829 	inc	dptr
+      00024A F0               [24]  830 	movx	@dptr,a
+                                    831 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:104: break;
+      00024B 80 2E            [24]  832 	sjmp	00196$
+      00024D                        833 00109$:
+                                    834 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:108: free(buffer[0]);
+      00024D 90r0FrA3         [24]  835 	mov	dptr,#_main_buffer_131072_67
+      000250 E0               [24]  836 	movx	a,@dptr
+      000251 FB               [12]  837 	mov	r3,a
+      000252 A3               [24]  838 	inc	dptr
+      000253 E0               [24]  839 	movx	a,@dptr
+      000254 FC               [12]  840 	mov	r4,a
+      000255 A3               [24]  841 	inc	dptr
+      000256 E0               [24]  842 	movx	a,@dptr
+      000257 FD               [12]  843 	mov	r5,a
+      000258 8B 82            [24]  844 	mov	dpl,r3
+      00025A 8C 83            [24]  845 	mov	dph,r4
+      00025C 8D F0            [24]  846 	mov	b,r5
+      00025E C0 07            [24]  847 	push	ar7
+      000260 C0 06            [24]  848 	push	ar6
+      000262 12r00r00         [24]  849 	lcall	_free
+                                    850 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:109: printf_tiny("\n \rMalloc buffer1 failed so reenter value\n\r");
+      000265 74rD0            [12]  851 	mov	a,#___str_6
+      000267 C0 E0            [24]  852 	push	acc
+      000269 74s00            [12]  853 	mov	a,#(___str_6 >> 8)
+      00026B C0 E0            [24]  854 	push	acc
+      00026D 12r00r00         [24]  855 	lcall	_printf_tiny
+      000270 15 81            [12]  856 	dec	sp
+      000272 15 81            [12]  857 	dec	sp
+      000274 D0 06            [24]  858 	pop	ar6
+      000276 D0 07            [24]  859 	pop	ar7
+      000278 02r00r23         [24]  860 	ljmp	00113$
+                                    861 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:114: while(1)
+      00027B                        862 00196$:
+      00027B 90r0FrDF         [24]  863 	mov	dptr,#_main_buffnewcount_131072_67
+      00027E E0               [24]  864 	movx	a,@dptr
+      00027F F5*0A            [12]  865 	mov	_main_sloc4_1_0,a
+      000281 A3               [24]  866 	inc	dptr
+      000282 E0               [24]  867 	movx	a,@dptr
+      000283 F5*0B            [12]  868 	mov	(_main_sloc4_1_0 + 1),a
+      000285 7C 00            [12]  869 	mov	r4,#0x00
+      000287 7D 00            [12]  870 	mov	r5,#0x00
+      000289                        871 00149$:
+                                    872 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:116: printf("\n\r ####### Select from the command options below ##########");
+      000289 C0 05            [24]  873 	push	ar5
+      00028B C0 04            [24]  874 	push	ar4
+      00028D 74rFC            [12]  875 	mov	a,#___str_7
+      00028F C0 E0            [24]  876 	push	acc
+      000291 74s00            [12]  877 	mov	a,#(___str_7 >> 8)
+      000293 C0 E0            [24]  878 	push	acc
+      000295 74 80            [12]  879 	mov	a,#0x80
+      000297 C0 E0            [24]  880 	push	acc
+      000299 12r00r00         [24]  881 	lcall	_printf
+      00029C 15 81            [12]  882 	dec	sp
+      00029E 15 81            [12]  883 	dec	sp
+      0002A0 15 81            [12]  884 	dec	sp
+                                    885 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:117: printf("\n \r 1. '+' Sign --> Add a New Buffer");
+      0002A2 74r38            [12]  886 	mov	a,#___str_8
+      0002A4 C0 E0            [24]  887 	push	acc
+      0002A6 74s01            [12]  888 	mov	a,#(___str_8 >> 8)
+      0002A8 C0 E0            [24]  889 	push	acc
+      0002AA 74 80            [12]  890 	mov	a,#0x80
+      0002AC C0 E0            [24]  891 	push	acc
+      0002AE 12r00r00         [24]  892 	lcall	_printf
+      0002B1 15 81            [12]  893 	dec	sp
+      0002B3 15 81            [12]  894 	dec	sp
+      0002B5 15 81            [12]  895 	dec	sp
+                                    896 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:118: printf("\n \r 2. '-' Sign --> Clean a Buffer");
+      0002B7 74r5D            [12]  897 	mov	a,#___str_9
+      0002B9 C0 E0            [24]  898 	push	acc
+      0002BB 74s01            [12]  899 	mov	a,#(___str_9 >> 8)
+      0002BD C0 E0            [24]  900 	push	acc
+      0002BF 74 80            [12]  901 	mov	a,#0x80
+      0002C1 C0 E0            [24]  902 	push	acc
+      0002C3 12r00r00         [24]  903 	lcall	_printf
+      0002C6 15 81            [12]  904 	dec	sp
+      0002C8 15 81            [12]  905 	dec	sp
+      0002CA 15 81            [12]  906 	dec	sp
+                                    907 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:119: printf("\n \r 3. '?' Sign --> Display a Detailed Heap Report");
+      0002CC 74r80            [12]  908 	mov	a,#___str_10
+      0002CE C0 E0            [24]  909 	push	acc
+      0002D0 74s01            [12]  910 	mov	a,#(___str_10 >> 8)
+      0002D2 C0 E0            [24]  911 	push	acc
+      0002D4 74 80            [12]  912 	mov	a,#0x80
+      0002D6 C0 E0            [24]  913 	push	acc
+      0002D8 12r00r00         [24]  914 	lcall	_printf
+      0002DB 15 81            [12]  915 	dec	sp
+      0002DD 15 81            [12]  916 	dec	sp
+      0002DF 15 81            [12]  917 	dec	sp
+                                    918 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:120: printf("\n \r 4. '@' Sign --> Clear all Buffers Data and Start Again");
+      0002E1 74rB3            [12]  919 	mov	a,#___str_11
+      0002E3 C0 E0            [24]  920 	push	acc
+      0002E5 74s01            [12]  921 	mov	a,#(___str_11 >> 8)
+      0002E7 C0 E0            [24]  922 	push	acc
+      0002E9 74 80            [12]  923 	mov	a,#0x80
+      0002EB C0 E0            [24]  924 	push	acc
+      0002ED 12r00r00         [24]  925 	lcall	_printf
+      0002F0 15 81            [12]  926 	dec	sp
+      0002F2 15 81            [12]  927 	dec	sp
+      0002F4 15 81            [12]  928 	dec	sp
+                                    929 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:121: printf("\n \r 5. 'a'-'z'  --> Store these Characters in Buffer 0");
+      0002F6 74rEE            [12]  930 	mov	a,#___str_12
+      0002F8 C0 E0            [24]  931 	push	acc
+      0002FA 74s01            [12]  932 	mov	a,#(___str_12 >> 8)
+      0002FC C0 E0            [24]  933 	push	acc
+      0002FE 74 80            [12]  934 	mov	a,#0x80
+      000300 C0 E0            [24]  935 	push	acc
+      000302 12r00r00         [24]  936 	lcall	_printf
+      000305 15 81            [12]  937 	dec	sp
+      000307 15 81            [12]  938 	dec	sp
+      000309 15 81            [12]  939 	dec	sp
+                                    940 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:122: printf("##############################################################");
+      00030B 74r25            [12]  941 	mov	a,#___str_13
+      00030D C0 E0            [24]  942 	push	acc
+      00030F 74s02            [12]  943 	mov	a,#(___str_13 >> 8)
+      000311 C0 E0            [24]  944 	push	acc
+      000313 74 80            [12]  945 	mov	a,#0x80
+      000315 C0 E0            [24]  946 	push	acc
+      000317 12r00r00         [24]  947 	lcall	_printf
+      00031A 15 81            [12]  948 	dec	sp
+      00031C 15 81            [12]  949 	dec	sp
+      00031E 15 81            [12]  950 	dec	sp
+                                    951 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:123: printf_tiny("\n \rEnter character \n \r");
+      000320 74r64            [12]  952 	mov	a,#___str_14
+      000322 C0 E0            [24]  953 	push	acc
+      000324 74s02            [12]  954 	mov	a,#(___str_14 >> 8)
+      000326 C0 E0            [24]  955 	push	acc
+      000328 12r00r00         [24]  956 	lcall	_printf_tiny
+      00032B 15 81            [12]  957 	dec	sp
+      00032D 15 81            [12]  958 	dec	sp
+                                    959 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:124: uint16_t takechar = getchar();
+      00032F 12r0Cr01         [24]  960 	lcall	_getchar
+      000332 85 82*0C         [24]  961 	mov	_main_sloc5_1_0,dpl
+      000335 85 83*0D         [24]  962 	mov	(_main_sloc5_1_0 + 1),dph
+      000338 D0 04            [24]  963 	pop	ar4
+      00033A D0 05            [24]  964 	pop	ar5
+                                    965 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:125: totalcharcount++;
+      00033C 0C               [12]  966 	inc	r4
+      00033D BC 00 01         [24]  967 	cjne	r4,#0x00,00310$
+      000340 0D               [12]  968 	inc	r5
+      000341                        969 00310$:
+                                    970 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:126: if(takechar !='?')
+      000341 74 3F            [12]  971 	mov	a,#0x3f
+      000343 B5*0C 06         [24]  972 	cjne	a,_main_sloc5_1_0,00311$
+      000346 E4               [12]  973 	clr	a
+      000347 B5*0D 02         [24]  974 	cjne	a,(_main_sloc5_1_0 + 1),00311$
+      00034A 80 0C            [24]  975 	sjmp	00116$
+      00034C                        976 00311$:
+                                    977 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:128: totalcharafterQ++;
+      00034C 90r10r83         [24]  978 	mov	dptr,#_main_totalcharafterQ_131072_67
+      00034F E0               [24]  979 	movx	a,@dptr
+      000350 24 01            [12]  980 	add	a,#0x01
+      000352 F0               [24]  981 	movx	@dptr,a
+      000353 A3               [24]  982 	inc	dptr
+      000354 E0               [24]  983 	movx	a,@dptr
+      000355 34 00            [12]  984 	addc	a,#0x00
+      000357 F0               [24]  985 	movx	@dptr,a
+      000358                        986 00116$:
+                                    987 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:130: printf("\n \rTotal number of characters =%d \n \r",totalcharcount);
+      000358 C0 05            [24]  988 	push	ar5
+      00035A C0 04            [24]  989 	push	ar4
+      00035C C0 04            [24]  990 	push	ar4
+      00035E C0 05            [24]  991 	push	ar5
+      000360 74r7B            [12]  992 	mov	a,#___str_15
+      000362 C0 E0            [24]  993 	push	acc
+      000364 74s02            [12]  994 	mov	a,#(___str_15 >> 8)
+      000366 C0 E0            [24]  995 	push	acc
+      000368 74 80            [12]  996 	mov	a,#0x80
+      00036A C0 E0            [24]  997 	push	acc
+      00036C 12r00r00         [24]  998 	lcall	_printf
+      00036F E5 81            [12]  999 	mov	a,sp
+      000371 24 FB            [12] 1000 	add	a,#0xfb
+      000373 F5 81            [12] 1001 	mov	sp,a
+                                   1002 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:131: putchar(takechar);
+      000375 85*0C 82         [24] 1003 	mov	dpl,_main_sloc5_1_0
+      000378 85*0D 83         [24] 1004 	mov	dph,(_main_sloc5_1_0 + 1)
+      00037B 12r0Cr0F         [24] 1005 	lcall	_putchar
+      00037E D0 04            [24] 1006 	pop	ar4
+      000380 D0 05            [24] 1007 	pop	ar5
+                                   1008 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:132: if ((takechar>96 && takechar<123) && freespacesbuff[0] !=0)      // to get character from 'a' to 'z' and store in Buffer 0
+      000382 A8*0C            [24] 1009 	mov	r0,_main_sloc5_1_0
+      000384 A9*0D            [24] 1010 	mov	r1,(_main_sloc5_1_0 + 1)
+      000386 C3               [12] 1011 	clr	c
+      000387 74 60            [12] 1012 	mov	a,#0x60
+      000389 98               [12] 1013 	subb	a,r0
+      00038A E4               [12] 1014 	clr	a
+      00038B 99               [12] 1015 	subb	a,r1
+      00038C 40 03            [24] 1016 	jc	00312$
+      00038E 02r04r83         [24] 1017 	ljmp	00118$
+      000391                       1018 00312$:
+      000391 A8*0C            [24] 1019 	mov	r0,_main_sloc5_1_0
+      000393 A9*0D            [24] 1020 	mov	r1,(_main_sloc5_1_0 + 1)
+      000395 C3               [12] 1021 	clr	c
+      000396 E8               [12] 1022 	mov	a,r0
+      000397 94 7B            [12] 1023 	subb	a,#0x7b
+      000399 E9               [12] 1024 	mov	a,r1
+      00039A 94 00            [12] 1025 	subb	a,#0x00
+      00039C 40 03            [24] 1026 	jc	00313$
+      00039E 02r04r83         [24] 1027 	ljmp	00118$
+      0003A1                       1028 00313$:
+      0003A1 90r10r85         [24] 1029 	mov	dptr,#_main_freespacesbuff_131072_67
+      0003A4 E0               [24] 1030 	movx	a,@dptr
+      0003A5 F8               [12] 1031 	mov	r0,a
+      0003A6 A3               [24] 1032 	inc	dptr
+      0003A7 E0               [24] 1033 	movx	a,@dptr
+      0003A8 F9               [12] 1034 	mov	r1,a
+      0003A9 48               [12] 1035 	orl	a,r0
+      0003AA 70 03            [24] 1036 	jnz	00314$
+      0003AC 02r04r83         [24] 1037 	ljmp	00118$
+      0003AF                       1038 00314$:
+                                   1039 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:134: DEBUGPORT(0xAA);
+      0003AF C0 04            [24] 1040 	push	ar4
+      0003B1 C0 05            [24] 1041 	push	ar5
+      0003B3 75 82 AA         [24] 1042 	mov	dpl,#0xaa
+      0003B6 C0 05            [24] 1043 	push	ar5
+      0003B8 C0 04            [24] 1044 	push	ar4
+      0003BA 12r00r00         [24] 1045 	lcall	_dataout
+      0003BD D0 04            [24] 1046 	pop	ar4
+      0003BF D0 05            [24] 1047 	pop	ar5
+                                   1048 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:135: *(buffer[0]+ totalstoragecount) = takechar;
+      0003C1 90r0FrA3         [24] 1049 	mov	dptr,#_main_buffer_131072_67
+      0003C4 E0               [24] 1050 	movx	a,@dptr
+      0003C5 F5*00            [12] 1051 	mov	_main_sloc0_1_0,a
+      0003C7 A3               [24] 1052 	inc	dptr
+      0003C8 E0               [24] 1053 	movx	a,@dptr
+      0003C9 F5*01            [12] 1054 	mov	(_main_sloc0_1_0 + 1),a
+      0003CB A3               [24] 1055 	inc	dptr
+      0003CC E0               [24] 1056 	movx	a,@dptr
+      0003CD F5*02            [12] 1057 	mov	(_main_sloc0_1_0 + 2),a
+      0003CF 90r0FrE1         [24] 1058 	mov	dptr,#_main_totalstoragecount_131072_67
+      0003D2 E0               [24] 1059 	movx	a,@dptr
+      0003D3 F5*03            [12] 1060 	mov	_main_sloc1_1_0,a
+      0003D5 A3               [24] 1061 	inc	dptr
+      0003D6 E0               [24] 1062 	movx	a,@dptr
+      0003D7 F5*04            [12] 1063 	mov	(_main_sloc1_1_0 + 1),a
+      0003D9 E5*03            [12] 1064 	mov	a,_main_sloc1_1_0
+      0003DB 25*00            [12] 1065 	add	a,_main_sloc0_1_0
+      0003DD F5*00            [12] 1066 	mov	_main_sloc0_1_0,a
+      0003DF E5*04            [12] 1067 	mov	a,(_main_sloc1_1_0 + 1)
+      0003E1 35*01            [12] 1068 	addc	a,(_main_sloc0_1_0 + 1)
+      0003E3 F5*01            [12] 1069 	mov	(_main_sloc0_1_0 + 1),a
+      0003E5 AC*0C            [24] 1070 	mov	r4,_main_sloc5_1_0
+      0003E7 85*00 82         [24] 1071 	mov	dpl,_main_sloc0_1_0
+      0003EA 85*01 83         [24] 1072 	mov	dph,(_main_sloc0_1_0 + 1)
+      0003ED 85*02 F0         [24] 1073 	mov	b,(_main_sloc0_1_0 + 2)
+      0003F0 EC               [12] 1074 	mov	a,r4
+      0003F1 12r00r00         [24] 1075 	lcall	__gptrput
+                                   1076 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:137: printf(" --> This character is stored at %p \n",(buffer[0]+totalstoragecount));
+      0003F4 90r0FrA3         [24] 1077 	mov	dptr,#_main_buffer_131072_67
+      0003F7 E0               [24] 1078 	movx	a,@dptr
+      0003F8 F9               [12] 1079 	mov	r1,a
+      0003F9 A3               [24] 1080 	inc	dptr
+      0003FA E0               [24] 1081 	movx	a,@dptr
+      0003FB FC               [12] 1082 	mov	r4,a
+      0003FC A3               [24] 1083 	inc	dptr
+      0003FD E0               [24] 1084 	movx	a,@dptr
+      0003FE FD               [12] 1085 	mov	r5,a
+      0003FF E5*03            [12] 1086 	mov	a,_main_sloc1_1_0
+      000401 29               [12] 1087 	add	a,r1
+      000402 F9               [12] 1088 	mov	r1,a
+      000403 E5*04            [12] 1089 	mov	a,(_main_sloc1_1_0 + 1)
+      000405 3C               [12] 1090 	addc	a,r4
+      000406 FC               [12] 1091 	mov	r4,a
+      000407 C0 05            [24] 1092 	push	ar5
+      000409 C0 04            [24] 1093 	push	ar4
+      00040B C0 01            [24] 1094 	push	ar1
+      00040D C0 04            [24] 1095 	push	ar4
+      00040F C0 05            [24] 1096 	push	ar5
+      000411 74rA1            [12] 1097 	mov	a,#___str_16
+      000413 C0 E0            [24] 1098 	push	acc
+      000415 74s02            [12] 1099 	mov	a,#(___str_16 >> 8)
+      000417 C0 E0            [24] 1100 	push	acc
+      000419 74 80            [12] 1101 	mov	a,#0x80
+      00041B C0 E0            [24] 1102 	push	acc
+      00041D 12r00r00         [24] 1103 	lcall	_printf
+      000420 E5 81            [12] 1104 	mov	a,sp
+      000422 24 FA            [12] 1105 	add	a,#0xfa
+      000424 F5 81            [12] 1106 	mov	sp,a
+      000426 D0 04            [24] 1107 	pop	ar4
+      000428 D0 05            [24] 1108 	pop	ar5
+                                   1109 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:140: totalstoragecount++;
+      00042A 90r0FrE1         [24] 1110 	mov	dptr,#_main_totalstoragecount_131072_67
+      00042D 74 01            [12] 1111 	mov	a,#0x01
+      00042F 25*03            [12] 1112 	add	a,_main_sloc1_1_0
+      000431 F0               [24] 1113 	movx	@dptr,a
+      000432 E4               [12] 1114 	clr	a
+      000433 35*04            [12] 1115 	addc	a,(_main_sloc1_1_0 + 1)
+      000435 A3               [24] 1116 	inc	dptr
+      000436 F0               [24] 1117 	movx	@dptr,a
+                                   1118 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:142: storagecountall[0]=totalstoragecount;
+      000437 90r0FrE1         [24] 1119 	mov	dptr,#_main_totalstoragecount_131072_67
+      00043A E0               [24] 1120 	movx	a,@dptr
+      00043B FC               [12] 1121 	mov	r4,a
+      00043C A3               [24] 1122 	inc	dptr
+      00043D E0               [24] 1123 	movx	a,@dptr
+      00043E FD               [12] 1124 	mov	r5,a
+      00043F 90r10r5B         [24] 1125 	mov	dptr,#_main_storagecountall_131072_67
+      000442 EC               [12] 1126 	mov	a,r4
+      000443 F0               [24] 1127 	movx	@dptr,a
+      000444 ED               [12] 1128 	mov	a,r5
+      000445 A3               [24] 1129 	inc	dptr
+      000446 F0               [24] 1130 	movx	@dptr,a
+                                   1131 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:143: freespacesbuff[0]= buff01size - storagecountall[0];
+      000447 90r0FrA1         [24] 1132 	mov	dptr,#_buff01size
+      00044A E0               [24] 1133 	movx	a,@dptr
+      00044B F8               [12] 1134 	mov	r0,a
+      00044C A3               [24] 1135 	inc	dptr
+      00044D E0               [24] 1136 	movx	a,@dptr
+      00044E F9               [12] 1137 	mov	r1,a
+      00044F E8               [12] 1138 	mov	a,r0
+      000450 C3               [12] 1139 	clr	c
+      000451 9C               [12] 1140 	subb	a,r4
+      000452 F8               [12] 1141 	mov	r0,a
+      000453 E9               [12] 1142 	mov	a,r1
+      000454 9D               [12] 1143 	subb	a,r5
+      000455 F9               [12] 1144 	mov	r1,a
+      000456 90r10r85         [24] 1145 	mov	dptr,#_main_freespacesbuff_131072_67
+      000459 E8               [12] 1146 	mov	a,r0
+      00045A F0               [24] 1147 	movx	@dptr,a
+      00045B E9               [12] 1148 	mov	a,r1
+      00045C A3               [24] 1149 	inc	dptr
+      00045D F0               [24] 1150 	movx	@dptr,a
+                                   1151 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:144: printf("\n \r Total number of storage characters =%d \n",totalstoragecount);
+      00045E C0 05            [24] 1152 	push	ar5
+      000460 C0 04            [24] 1153 	push	ar4
+      000462 C0 04            [24] 1154 	push	ar4
+      000464 C0 05            [24] 1155 	push	ar5
+      000466 74rC7            [12] 1156 	mov	a,#___str_17
+      000468 C0 E0            [24] 1157 	push	acc
+      00046A 74s02            [12] 1158 	mov	a,#(___str_17 >> 8)
+      00046C C0 E0            [24] 1159 	push	acc
+      00046E 74 80            [12] 1160 	mov	a,#0x80
+      000470 C0 E0            [24] 1161 	push	acc
+      000472 12r00r00         [24] 1162 	lcall	_printf
+      000475 E5 81            [12] 1163 	mov	a,sp
+      000477 24 FB            [12] 1164 	add	a,#0xfb
+      000479 F5 81            [12] 1165 	mov	sp,a
+      00047B D0 04            [24] 1166 	pop	ar4
+      00047D D0 05            [24] 1167 	pop	ar5
+                                   1168 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:236: main();
+      00047F D0 05            [24] 1169 	pop	ar5
+      000481 D0 04            [24] 1170 	pop	ar4
+                                   1171 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:144: printf("\n \r Total number of storage characters =%d \n",totalstoragecount);
+      000483                       1172 00118$:
+                                   1173 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:146: if (takechar=='+')      //to create a new buffer
+      000483 74 2B            [12] 1174 	mov	a,#0x2b
+      000485 B5*0C 06         [24] 1175 	cjne	a,_main_sloc5_1_0,00315$
+      000488 E4               [12] 1176 	clr	a
+      000489 B5*0D 02         [24] 1177 	cjne	a,(_main_sloc5_1_0 + 1),00315$
+      00048C 80 03            [24] 1178 	sjmp	00316$
+      00048E                       1179 00315$:
+      00048E 02r06r16         [24] 1180 	ljmp	00125$
+      000491                       1181 00316$:
+                                   1182 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:148: DEBUGPORT(0xBB);
+      000491 C0 04            [24] 1183 	push	ar4
+      000493 C0 05            [24] 1184 	push	ar5
+      000495 75 82 BB         [24] 1185 	mov	dpl,#0xbb
+      000498 C0 05            [24] 1186 	push	ar5
+      00049A C0 04            [24] 1187 	push	ar4
+      00049C 12r00r00         [24] 1188 	lcall	_dataout
+                                   1189 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:149: printf("\n \r You need to enter a number between 30 to 300 bytes to create a new buffer \n");
+      00049F 74rF4            [12] 1190 	mov	a,#___str_18
+      0004A1 C0 E0            [24] 1191 	push	acc
+      0004A3 74s02            [12] 1192 	mov	a,#(___str_18 >> 8)
+      0004A5 C0 E0            [24] 1193 	push	acc
+      0004A7 74 80            [12] 1194 	mov	a,#0x80
+      0004A9 C0 E0            [24] 1195 	push	acc
+      0004AB 12r00r00         [24] 1196 	lcall	_printf
+      0004AE 15 81            [12] 1197 	dec	sp
+      0004B0 15 81            [12] 1198 	dec	sp
+      0004B2 15 81            [12] 1199 	dec	sp
+                                   1200 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:150: uint16_t n= takeinput();
+      0004B4 12r0Br40         [24] 1201 	lcall	_takeinput
+      0004B7 85 82*00         [24] 1202 	mov	_main_sloc0_1_0,dpl
+      0004BA 85 83*01         [24] 1203 	mov	(_main_sloc0_1_0 + 1),dph
+      0004BD D0 04            [24] 1204 	pop	ar4
+      0004BF D0 05            [24] 1205 	pop	ar5
+                                   1206 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:151: if (n>30 && n<300){
+      0004C1 AC*00            [24] 1207 	mov	r4,_main_sloc0_1_0
+      0004C3 AD*01            [24] 1208 	mov	r5,(_main_sloc0_1_0 + 1)
+      0004C5 C3               [12] 1209 	clr	c
+      0004C6 74 1E            [12] 1210 	mov	a,#0x1e
+      0004C8 9C               [12] 1211 	subb	a,r4
+      0004C9 E4               [12] 1212 	clr	a
+      0004CA 9D               [12] 1213 	subb	a,r5
+      0004CB D0 05            [24] 1214 	pop	ar5
+      0004CD D0 04            [24] 1215 	pop	ar4
+      0004CF 40 03            [24] 1216 	jc	00317$
+      0004D1 02r06r16         [24] 1217 	ljmp	00125$
+      0004D4                       1218 00317$:
+      0004D4 C0 04            [24] 1219 	push	ar4
+      0004D6 C0 05            [24] 1220 	push	ar5
+      0004D8 AC*00            [24] 1221 	mov	r4,_main_sloc0_1_0
+      0004DA AD*01            [24] 1222 	mov	r5,(_main_sloc0_1_0 + 1)
+      0004DC C3               [12] 1223 	clr	c
+      0004DD EC               [12] 1224 	mov	a,r4
+      0004DE 94 2C            [12] 1225 	subb	a,#0x2c
+      0004E0 ED               [12] 1226 	mov	a,r5
+      0004E1 94 01            [12] 1227 	subb	a,#0x01
+      0004E3 D0 05            [24] 1228 	pop	ar5
+      0004E5 D0 04            [24] 1229 	pop	ar4
+      0004E7 40 03            [24] 1230 	jc	00318$
+      0004E9 02r06r16         [24] 1231 	ljmp	00125$
+      0004EC                       1232 00318$:
+                                   1233 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:152: buffer[buffnewcount] = (uint8_t *)malloc(n);
+      0004EC C0 04            [24] 1234 	push	ar4
+      0004EE C0 05            [24] 1235 	push	ar5
+      0004F0 90r00r00         [24] 1236 	mov	dptr,#__mulint_PARM_2
+      0004F3 E5*0A            [12] 1237 	mov	a,_main_sloc4_1_0
+      0004F5 F0               [24] 1238 	movx	@dptr,a
+      0004F6 E5*0B            [12] 1239 	mov	a,(_main_sloc4_1_0 + 1)
+      0004F8 A3               [24] 1240 	inc	dptr
+      0004F9 F0               [24] 1241 	movx	@dptr,a
+      0004FA 90 00 03         [24] 1242 	mov	dptr,#0x0003
+      0004FD 12r00r00         [24] 1243 	lcall	__mulint
+      000500 AC 82            [24] 1244 	mov	r4,dpl
+      000502 AD 83            [24] 1245 	mov	r5,dph
+      000504 EC               [12] 1246 	mov	a,r4
+      000505 24rA3            [12] 1247 	add	a,#_main_buffer_131072_67
+      000507 F5*03            [12] 1248 	mov	_main_sloc1_1_0,a
+      000509 ED               [12] 1249 	mov	a,r5
+      00050A 34s0F            [12] 1250 	addc	a,#(_main_buffer_131072_67 >> 8)
+      00050C F5*04            [12] 1251 	mov	(_main_sloc1_1_0 + 1),a
+      00050E 85*00 82         [24] 1252 	mov	dpl,_main_sloc0_1_0
+      000511 85*01 83         [24] 1253 	mov	dph,(_main_sloc0_1_0 + 1)
+      000514 12r00r00         [24] 1254 	lcall	_malloc
+      000517 AC 82            [24] 1255 	mov	r4,dpl
+      000519 AD 83            [24] 1256 	mov	r5,dph
+      00051B 8C*05            [24] 1257 	mov	_main_sloc2_1_0,r4
+      00051D 8D*06            [24] 1258 	mov	(_main_sloc2_1_0 + 1),r5
+      00051F 75*07 00         [24] 1259 	mov	(_main_sloc2_1_0 + 2),#0x00
+      000522 85*03 82         [24] 1260 	mov	dpl,_main_sloc1_1_0
+      000525 85*04 83         [24] 1261 	mov	dph,(_main_sloc1_1_0 + 1)
+      000528 E5*05            [12] 1262 	mov	a,_main_sloc2_1_0
+      00052A F0               [24] 1263 	movx	@dptr,a
+      00052B E5*06            [12] 1264 	mov	a,(_main_sloc2_1_0 + 1)
+      00052D A3               [24] 1265 	inc	dptr
+      00052E F0               [24] 1266 	movx	@dptr,a
+      00052F E5*07            [12] 1267 	mov	a,(_main_sloc2_1_0 + 2)
+      000531 A3               [24] 1268 	inc	dptr
+      000532 F0               [24] 1269 	movx	@dptr,a
+                                   1270 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:153: startaddr[buffnewcount] = (int)buffer[buffnewcount];
+      000533 E5*0A            [12] 1271 	mov	a,_main_sloc4_1_0
+      000535 25*0A            [12] 1272 	add	a,_main_sloc4_1_0
+      000537 F5*08            [12] 1273 	mov	_main_sloc3_1_0,a
+      000539 E5*0B            [12] 1274 	mov	a,(_main_sloc4_1_0 + 1)
+      00053B 33               [12] 1275 	rlc	a
+      00053C F5*09            [12] 1276 	mov	(_main_sloc3_1_0 + 1),a
+      00053E E5*08            [12] 1277 	mov	a,_main_sloc3_1_0
+      000540 24rE3            [12] 1278 	add	a,#_main_startaddr_131072_67
+      000542 F5 82            [12] 1279 	mov	dpl,a
+      000544 E5*09            [12] 1280 	mov	a,(_main_sloc3_1_0 + 1)
+      000546 34s0F            [12] 1281 	addc	a,#(_main_startaddr_131072_67 >> 8)
+      000548 F5 83            [12] 1282 	mov	dph,a
+      00054A A9*05            [24] 1283 	mov	r1,_main_sloc2_1_0
+      00054C AC*06            [24] 1284 	mov	r4,(_main_sloc2_1_0 + 1)
+      00054E E9               [12] 1285 	mov	a,r1
+      00054F F0               [24] 1286 	movx	@dptr,a
+      000550 EC               [12] 1287 	mov	a,r4
+      000551 A3               [24] 1288 	inc	dptr
+      000552 F0               [24] 1289 	movx	@dptr,a
+                                   1290 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:154: endaddr[buffnewcount]= (int)(buffer[buffnewcount]+ n);
+      000553 E5*08            [12] 1291 	mov	a,_main_sloc3_1_0
+      000555 24r0B            [12] 1292 	add	a,#_main_endaddr_131072_67
+      000557 F5 82            [12] 1293 	mov	dpl,a
+      000559 E5*09            [12] 1294 	mov	a,(_main_sloc3_1_0 + 1)
+      00055B 34s10            [12] 1295 	addc	a,#(_main_endaddr_131072_67 >> 8)
+      00055D F5 83            [12] 1296 	mov	dph,a
+      00055F E5*00            [12] 1297 	mov	a,_main_sloc0_1_0
+      000561 25*05            [12] 1298 	add	a,_main_sloc2_1_0
+      000563 F9               [12] 1299 	mov	r1,a
+      000564 E5*01            [12] 1300 	mov	a,(_main_sloc0_1_0 + 1)
+      000566 35*06            [12] 1301 	addc	a,(_main_sloc2_1_0 + 1)
+      000568 FC               [12] 1302 	mov	r4,a
+      000569 E9               [12] 1303 	mov	a,r1
+      00056A F0               [24] 1304 	movx	@dptr,a
+      00056B EC               [12] 1305 	mov	a,r4
+      00056C A3               [24] 1306 	inc	dptr
+      00056D F0               [24] 1307 	movx	@dptr,a
+                                   1308 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:155: buffersizes[buffnewcount]= n;
+      00056E E5*08            [12] 1309 	mov	a,_main_sloc3_1_0
+      000570 24r33            [12] 1310 	add	a,#_main_buffersizes_131072_67
+      000572 F5 82            [12] 1311 	mov	dpl,a
+      000574 E5*09            [12] 1312 	mov	a,(_main_sloc3_1_0 + 1)
+      000576 34s10            [12] 1313 	addc	a,#(_main_buffersizes_131072_67 >> 8)
+      000578 F5 83            [12] 1314 	mov	dph,a
+      00057A E5*00            [12] 1315 	mov	a,_main_sloc0_1_0
+      00057C F0               [24] 1316 	movx	@dptr,a
+      00057D E5*01            [12] 1317 	mov	a,(_main_sloc0_1_0 + 1)
+      00057F A3               [24] 1318 	inc	dptr
+      000580 F0               [24] 1319 	movx	@dptr,a
+                                   1320 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:156: storagecountall[buffnewcount]=0;
+      000581 E5*08            [12] 1321 	mov	a,_main_sloc3_1_0
+      000583 24r5B            [12] 1322 	add	a,#_main_storagecountall_131072_67
+      000585 FC               [12] 1323 	mov	r4,a
+      000586 E5*09            [12] 1324 	mov	a,(_main_sloc3_1_0 + 1)
+      000588 34s10            [12] 1325 	addc	a,#(_main_storagecountall_131072_67 >> 8)
+      00058A FD               [12] 1326 	mov	r5,a
+      00058B 8C 82            [24] 1327 	mov	dpl,r4
+      00058D 8D 83            [24] 1328 	mov	dph,r5
+      00058F E4               [12] 1329 	clr	a
+      000590 F0               [24] 1330 	movx	@dptr,a
+      000591 A3               [24] 1331 	inc	dptr
+      000592 F0               [24] 1332 	movx	@dptr,a
+                                   1333 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:157: freespacesbuff[buffnewcount]= n - storagecountall[buffnewcount];
+      000593 E5*08            [12] 1334 	mov	a,_main_sloc3_1_0
+      000595 24r85            [12] 1335 	add	a,#_main_freespacesbuff_131072_67
+      000597 F8               [12] 1336 	mov	r0,a
+      000598 E5*09            [12] 1337 	mov	a,(_main_sloc3_1_0 + 1)
+      00059A 34s10            [12] 1338 	addc	a,#(_main_freespacesbuff_131072_67 >> 8)
+      00059C F9               [12] 1339 	mov	r1,a
+      00059D 8C 82            [24] 1340 	mov	dpl,r4
+      00059F 8D 83            [24] 1341 	mov	dph,r5
+      0005A1 E0               [24] 1342 	movx	a,@dptr
+      0005A2 FC               [12] 1343 	mov	r4,a
+      0005A3 A3               [24] 1344 	inc	dptr
+      0005A4 E0               [24] 1345 	movx	a,@dptr
+      0005A5 FD               [12] 1346 	mov	r5,a
+      0005A6 E5*00            [12] 1347 	mov	a,_main_sloc0_1_0
+      0005A8 C3               [12] 1348 	clr	c
+      0005A9 9C               [12] 1349 	subb	a,r4
+      0005AA FC               [12] 1350 	mov	r4,a
+      0005AB E5*01            [12] 1351 	mov	a,(_main_sloc0_1_0 + 1)
+      0005AD 9D               [12] 1352 	subb	a,r5
+      0005AE FD               [12] 1353 	mov	r5,a
+      0005AF 88 82            [24] 1354 	mov	dpl,r0
+      0005B1 89 83            [24] 1355 	mov	dph,r1
+      0005B3 EC               [12] 1356 	mov	a,r4
+      0005B4 F0               [24] 1357 	movx	@dptr,a
+      0005B5 ED               [12] 1358 	mov	a,r5
+      0005B6 A3               [24] 1359 	inc	dptr
+      0005B7 F0               [24] 1360 	movx	@dptr,a
+                                   1361 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:158: printf_tiny("\n \r New Malloc buffer %d passed\n\r",buffnewcount);
+      0005B8 C0 05            [24] 1362 	push	ar5
+      0005BA C0 04            [24] 1363 	push	ar4
+      0005BC C0*0A            [24] 1364 	push	_main_sloc4_1_0
+      0005BE C0*0B            [24] 1365 	push	(_main_sloc4_1_0 + 1)
+      0005C0 74r44            [12] 1366 	mov	a,#___str_19
+      0005C2 C0 E0            [24] 1367 	push	acc
+      0005C4 74s03            [12] 1368 	mov	a,#(___str_19 >> 8)
+      0005C6 C0 E0            [24] 1369 	push	acc
+      0005C8 12r00r00         [24] 1370 	lcall	_printf_tiny
+      0005CB E5 81            [12] 1371 	mov	a,sp
+      0005CD 24 FC            [12] 1372 	add	a,#0xfc
+      0005CF F5 81            [12] 1373 	mov	sp,a
+      0005D1 D0 04            [24] 1374 	pop	ar4
+      0005D3 D0 05            [24] 1375 	pop	ar5
+                                   1376 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:159: printf("\n \r Address of buffer no %d: %p \n \r",buffnewcount, buffer[buffnewcount]);
+      0005D5 85*03 82         [24] 1377 	mov	dpl,_main_sloc1_1_0
+      0005D8 85*04 83         [24] 1378 	mov	dph,(_main_sloc1_1_0 + 1)
+      0005DB E0               [24] 1379 	movx	a,@dptr
+      0005DC F9               [12] 1380 	mov	r1,a
+      0005DD A3               [24] 1381 	inc	dptr
+      0005DE E0               [24] 1382 	movx	a,@dptr
+      0005DF FC               [12] 1383 	mov	r4,a
+      0005E0 A3               [24] 1384 	inc	dptr
+      0005E1 E0               [24] 1385 	movx	a,@dptr
+      0005E2 FD               [12] 1386 	mov	r5,a
+      0005E3 C0 05            [24] 1387 	push	ar5
+      0005E5 C0 04            [24] 1388 	push	ar4
+      0005E7 C0 01            [24] 1389 	push	ar1
+      0005E9 C0 04            [24] 1390 	push	ar4
+      0005EB C0 05            [24] 1391 	push	ar5
+      0005ED C0*0A            [24] 1392 	push	_main_sloc4_1_0
+      0005EF C0*0B            [24] 1393 	push	(_main_sloc4_1_0 + 1)
+      0005F1 74r66            [12] 1394 	mov	a,#___str_20
+      0005F3 C0 E0            [24] 1395 	push	acc
+      0005F5 74s03            [12] 1396 	mov	a,#(___str_20 >> 8)
+      0005F7 C0 E0            [24] 1397 	push	acc
+      0005F9 74 80            [12] 1398 	mov	a,#0x80
+      0005FB C0 E0            [24] 1399 	push	acc
+      0005FD 12r00r00         [24] 1400 	lcall	_printf
+      000600 E5 81            [12] 1401 	mov	a,sp
+      000602 24 F8            [12] 1402 	add	a,#0xf8
+      000604 F5 81            [12] 1403 	mov	sp,a
+      000606 D0 04            [24] 1404 	pop	ar4
+      000608 D0 05            [24] 1405 	pop	ar5
+                                   1406 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:160: buffnewcount++;
+      00060A 05*0A            [12] 1407 	inc	_main_sloc4_1_0
+      00060C E4               [12] 1408 	clr	a
+      00060D B5*0A 02         [24] 1409 	cjne	a,_main_sloc4_1_0,00319$
+      000610 05*0B            [12] 1410 	inc	(_main_sloc4_1_0 + 1)
+      000612                       1411 00319$:
+                                   1412 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:236: main();
+      000612 D0 05            [24] 1413 	pop	ar5
+      000614 D0 04            [24] 1414 	pop	ar4
+                                   1415 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:160: buffnewcount++;
+      000616                       1416 00125$:
+                                   1417 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:163: if (takechar=='-')   // TO delete a buffer
+      000616 74 2D            [12] 1418 	mov	a,#0x2d
+      000618 B5*0C 06         [24] 1419 	cjne	a,_main_sloc5_1_0,00320$
+      00061B E4               [12] 1420 	clr	a
+      00061C B5*0D 02         [24] 1421 	cjne	a,(_main_sloc5_1_0 + 1),00320$
+      00061F 80 03            [24] 1422 	sjmp	00321$
+      000621                       1423 00320$:
+      000621 02r07r04         [24] 1424 	ljmp	00131$
+      000624                       1425 00321$:
+                                   1426 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:165: DEBUGPORT(0xCC);
+      000624 C0 04            [24] 1427 	push	ar4
+      000626 C0 05            [24] 1428 	push	ar5
+      000628 75 82 CC         [24] 1429 	mov	dpl,#0xcc
+      00062B C0 05            [24] 1430 	push	ar5
+      00062D C0 04            [24] 1431 	push	ar4
+      00062F 12r00r00         [24] 1432 	lcall	_dataout
+                                   1433 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:166: printf("\n \r You need to enter a valid buffer number to clear it \n");
+      000632 74r8A            [12] 1434 	mov	a,#___str_21
+      000634 C0 E0            [24] 1435 	push	acc
+      000636 74s03            [12] 1436 	mov	a,#(___str_21 >> 8)
+      000638 C0 E0            [24] 1437 	push	acc
+      00063A 74 80            [12] 1438 	mov	a,#0x80
+      00063C C0 E0            [24] 1439 	push	acc
+      00063E 12r00r00         [24] 1440 	lcall	_printf
+      000641 15 81            [12] 1441 	dec	sp
+      000643 15 81            [12] 1442 	dec	sp
+      000645 15 81            [12] 1443 	dec	sp
+                                   1444 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:167: uint16_t buffno = takeinput();
+      000647 12r0Br40         [24] 1445 	lcall	_takeinput
+      00064A 85 82*08         [24] 1446 	mov	_main_sloc3_1_0,dpl
+      00064D 85 83*09         [24] 1447 	mov	(_main_sloc3_1_0 + 1),dph
+      000650 D0 04            [24] 1448 	pop	ar4
+      000652 D0 05            [24] 1449 	pop	ar5
+                                   1450 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:168: if ((buffno <= buffnewcount) && (buffno != 0))
+      000654 AC*08            [24] 1451 	mov	r4,_main_sloc3_1_0
+      000656 AD*09            [24] 1452 	mov	r5,(_main_sloc3_1_0 + 1)
+      000658 C3               [12] 1453 	clr	c
+      000659 E5*0A            [12] 1454 	mov	a,_main_sloc4_1_0
+      00065B 9C               [12] 1455 	subb	a,r4
+      00065C E5*0B            [12] 1456 	mov	a,(_main_sloc4_1_0 + 1)
+      00065E 9D               [12] 1457 	subb	a,r5
+      00065F D0 05            [24] 1458 	pop	ar5
+      000661 D0 04            [24] 1459 	pop	ar4
+      000663 50 03            [24] 1460 	jnc	00322$
+      000665 02r06rE7         [24] 1461 	ljmp	00127$
+      000668                       1462 00322$:
+      000668 E5*08            [12] 1463 	mov	a,_main_sloc3_1_0
+      00066A 45*09            [12] 1464 	orl	a,(_main_sloc3_1_0 + 1)
+      00066C 60 79            [24] 1465 	jz	00127$
+                                   1466 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:170: free(buffer[buffno]);
+      00066E C0 04            [24] 1467 	push	ar4
+      000670 C0 05            [24] 1468 	push	ar5
+      000672 90r00r00         [24] 1469 	mov	dptr,#__mulint_PARM_2
+      000675 E5*08            [12] 1470 	mov	a,_main_sloc3_1_0
+      000677 F0               [24] 1471 	movx	@dptr,a
+      000678 E5*09            [12] 1472 	mov	a,(_main_sloc3_1_0 + 1)
+      00067A A3               [24] 1473 	inc	dptr
+      00067B F0               [24] 1474 	movx	@dptr,a
+      00067C 90 00 03         [24] 1475 	mov	dptr,#0x0003
+      00067F 12r00r00         [24] 1476 	lcall	__mulint
+      000682 AC 82            [24] 1477 	mov	r4,dpl
+      000684 AD 83            [24] 1478 	mov	r5,dph
+      000686 EC               [12] 1479 	mov	a,r4
+      000687 24rA3            [12] 1480 	add	a,#_main_buffer_131072_67
+      000689 F5 82            [12] 1481 	mov	dpl,a
+      00068B ED               [12] 1482 	mov	a,r5
+      00068C 34s0F            [12] 1483 	addc	a,#(_main_buffer_131072_67 >> 8)
+      00068E F5 83            [12] 1484 	mov	dph,a
+      000690 E0               [24] 1485 	movx	a,@dptr
+      000691 F9               [12] 1486 	mov	r1,a
+      000692 A3               [24] 1487 	inc	dptr
+      000693 E0               [24] 1488 	movx	a,@dptr
+      000694 FC               [12] 1489 	mov	r4,a
+      000695 A3               [24] 1490 	inc	dptr
+      000696 E0               [24] 1491 	movx	a,@dptr
+      000697 FD               [12] 1492 	mov	r5,a
+      000698 89 82            [24] 1493 	mov	dpl,r1
+      00069A 8C 83            [24] 1494 	mov	dph,r4
+      00069C 8D F0            [24] 1495 	mov	b,r5
+      00069E C0 05            [24] 1496 	push	ar5
+      0006A0 C0 04            [24] 1497 	push	ar4
+      0006A2 12r00r00         [24] 1498 	lcall	_free
+      0006A5 D0 04            [24] 1499 	pop	ar4
+      0006A7 D0 05            [24] 1500 	pop	ar5
+                                   1501 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:171: startaddr[buffno]=0;
+      0006A9 E5*08            [12] 1502 	mov	a,_main_sloc3_1_0
+      0006AB 25*08            [12] 1503 	add	a,_main_sloc3_1_0
+      0006AD FC               [12] 1504 	mov	r4,a
+      0006AE E5*09            [12] 1505 	mov	a,(_main_sloc3_1_0 + 1)
+      0006B0 33               [12] 1506 	rlc	a
+      0006B1 FD               [12] 1507 	mov	r5,a
+      0006B2 EC               [12] 1508 	mov	a,r4
+      0006B3 24rE3            [12] 1509 	add	a,#_main_startaddr_131072_67
+      0006B5 F5 82            [12] 1510 	mov	dpl,a
+      0006B7 ED               [12] 1511 	mov	a,r5
+      0006B8 34s0F            [12] 1512 	addc	a,#(_main_startaddr_131072_67 >> 8)
+      0006BA F5 83            [12] 1513 	mov	dph,a
+      0006BC E4               [12] 1514 	clr	a
+      0006BD F0               [24] 1515 	movx	@dptr,a
+      0006BE A3               [24] 1516 	inc	dptr
+      0006BF F0               [24] 1517 	movx	@dptr,a
+                                   1518 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:172: printf("\n \r Buffer %d Cleared \n \r",buffno);
+      0006C0 C0 05            [24] 1519 	push	ar5
+      0006C2 C0 04            [24] 1520 	push	ar4
+      0006C4 C0*08            [24] 1521 	push	_main_sloc3_1_0
+      0006C6 C0*09            [24] 1522 	push	(_main_sloc3_1_0 + 1)
+      0006C8 74rC4            [12] 1523 	mov	a,#___str_22
+      0006CA C0 E0            [24] 1524 	push	acc
+      0006CC 74s03            [12] 1525 	mov	a,#(___str_22 >> 8)
+      0006CE C0 E0            [24] 1526 	push	acc
+      0006D0 74 80            [12] 1527 	mov	a,#0x80
+      0006D2 C0 E0            [24] 1528 	push	acc
+      0006D4 12r00r00         [24] 1529 	lcall	_printf
+      0006D7 E5 81            [12] 1530 	mov	a,sp
+      0006D9 24 FB            [12] 1531 	add	a,#0xfb
+      0006DB F5 81            [12] 1532 	mov	sp,a
+      0006DD D0 04            [24] 1533 	pop	ar4
+      0006DF D0 05            [24] 1534 	pop	ar5
+      0006E1 D0 05            [24] 1535 	pop	ar5
+      0006E3 D0 04            [24] 1536 	pop	ar4
+      0006E5 80 1D            [24] 1537 	sjmp	00131$
+      0006E7                       1538 00127$:
+                                   1539 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:177: printf("\n \r You entered a wrong Buffer number \n \r");
+      0006E7 C0 05            [24] 1540 	push	ar5
+      0006E9 C0 04            [24] 1541 	push	ar4
+      0006EB 74rDE            [12] 1542 	mov	a,#___str_23
+      0006ED C0 E0            [24] 1543 	push	acc
+      0006EF 74s03            [12] 1544 	mov	a,#(___str_23 >> 8)
+      0006F1 C0 E0            [24] 1545 	push	acc
+      0006F3 74 80            [12] 1546 	mov	a,#0x80
+      0006F5 C0 E0            [24] 1547 	push	acc
+      0006F7 12r00r00         [24] 1548 	lcall	_printf
+      0006FA 15 81            [12] 1549 	dec	sp
+      0006FC 15 81            [12] 1550 	dec	sp
+      0006FE 15 81            [12] 1551 	dec	sp
+      000700 D0 04            [24] 1552 	pop	ar4
+      000702 D0 05            [24] 1553 	pop	ar5
+      000704                       1554 00131$:
+                                   1555 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:180: if (takechar=='?')    // To give a detailed Heap report,Print Buffer 0 contents and clear Buffer 0
+      000704 74 3F            [12] 1556 	mov	a,#0x3f
+      000706 B5*0C 06         [24] 1557 	cjne	a,_main_sloc5_1_0,00324$
+      000709 E4               [12] 1558 	clr	a
+      00070A B5*0D 02         [24] 1559 	cjne	a,(_main_sloc5_1_0 + 1),00324$
+      00070D 80 03            [24] 1560 	sjmp	00325$
+      00070F                       1561 00324$:
+      00070F 02r09r23         [24] 1562 	ljmp	00139$
+      000712                       1563 00325$:
+                                   1564 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:182: DEBUGPORT(0xDD);
+      000712 75 82 DD         [24] 1565 	mov	dpl,#0xdd
+      000715 C0 05            [24] 1566 	push	ar5
+      000717 C0 04            [24] 1567 	push	ar4
+      000719 12r00r00         [24] 1568 	lcall	_dataout
+                                   1569 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:185: printf("\n \r ########################## Heap Report ########################### \n");
+      00071C 74r08            [12] 1570 	mov	a,#___str_24
+      00071E C0 E0            [24] 1571 	push	acc
+      000720 74s04            [12] 1572 	mov	a,#(___str_24 >> 8)
+      000722 C0 E0            [24] 1573 	push	acc
+      000724 74 80            [12] 1574 	mov	a,#0x80
+      000726 C0 E0            [24] 1575 	push	acc
+      000728 12r00r00         [24] 1576 	lcall	_printf
+      00072B 15 81            [12] 1577 	dec	sp
+      00072D 15 81            [12] 1578 	dec	sp
+      00072F 15 81            [12] 1579 	dec	sp
+                                   1580 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:186: printf("\n\rBuffer\tStarting Addr\tEsnding Addr\tSize\tStorageChar\t Free Space \n");
+      000731 74r51            [12] 1581 	mov	a,#___str_25
+      000733 C0 E0            [24] 1582 	push	acc
+      000735 74s04            [12] 1583 	mov	a,#(___str_25 >> 8)
+      000737 C0 E0            [24] 1584 	push	acc
+      000739 74 80            [12] 1585 	mov	a,#0x80
+      00073B C0 E0            [24] 1586 	push	acc
+      00073D 12r00r00         [24] 1587 	lcall	_printf
+      000740 15 81            [12] 1588 	dec	sp
+      000742 15 81            [12] 1589 	dec	sp
+      000744 15 81            [12] 1590 	dec	sp
+      000746 D0 04            [24] 1591 	pop	ar4
+      000748 D0 05            [24] 1592 	pop	ar5
+                                   1593 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:187: for (d=0; d< buffnewcount; d++)
+      00074A A8*0A            [24] 1594 	mov	r0,_main_sloc4_1_0
+      00074C A9*0B            [24] 1595 	mov	r1,(_main_sloc4_1_0 + 1)
+      00074E E4               [12] 1596 	clr	a
+      00074F F5*08            [12] 1597 	mov	_main_sloc3_1_0,a
+      000751 F5*09            [12] 1598 	mov	(_main_sloc3_1_0 + 1),a
+      000753                       1599 00155$:
+      000753 C0 04            [24] 1600 	push	ar4
+      000755 C0 05            [24] 1601 	push	ar5
+      000757 AC*08            [24] 1602 	mov	r4,_main_sloc3_1_0
+      000759 AD*09            [24] 1603 	mov	r5,(_main_sloc3_1_0 + 1)
+      00075B C3               [12] 1604 	clr	c
+      00075C EC               [12] 1605 	mov	a,r4
+      00075D 98               [12] 1606 	subb	a,r0
+      00075E ED               [12] 1607 	mov	a,r5
+      00075F 99               [12] 1608 	subb	a,r1
+      000760 D0 05            [24] 1609 	pop	ar5
+      000762 D0 04            [24] 1610 	pop	ar4
+      000764 40 03            [24] 1611 	jc	00326$
+      000766 02r08r26         [24] 1612 	ljmp	00134$
+      000769                       1613 00326$:
+                                   1614 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:189: if(startaddr[d] !=0)
+      000769 E5*08            [12] 1615 	mov	a,_main_sloc3_1_0
+      00076B 25*08            [12] 1616 	add	a,_main_sloc3_1_0
+      00076D F5*05            [12] 1617 	mov	_main_sloc2_1_0,a
+      00076F E5*09            [12] 1618 	mov	a,(_main_sloc3_1_0 + 1)
+      000771 33               [12] 1619 	rlc	a
+      000772 F5*06            [12] 1620 	mov	(_main_sloc2_1_0 + 1),a
+      000774 E5*05            [12] 1621 	mov	a,_main_sloc2_1_0
+      000776 24rE3            [12] 1622 	add	a,#_main_startaddr_131072_67
+      000778 F5 82            [12] 1623 	mov	dpl,a
+      00077A E5*06            [12] 1624 	mov	a,(_main_sloc2_1_0 + 1)
+      00077C 34s0F            [12] 1625 	addc	a,#(_main_startaddr_131072_67 >> 8)
+      00077E F5 83            [12] 1626 	mov	dph,a
+      000780 E0               [24] 1627 	movx	a,@dptr
+      000781 F5*03            [12] 1628 	mov	_main_sloc1_1_0,a
+      000783 A3               [24] 1629 	inc	dptr
+      000784 E0               [24] 1630 	movx	a,@dptr
+      000785 F5*04            [12] 1631 	mov	(_main_sloc1_1_0 + 1),a
+      000787 E5*03            [12] 1632 	mov	a,_main_sloc1_1_0
+      000789 45*04            [12] 1633 	orl	a,(_main_sloc1_1_0 + 1)
+      00078B 70 03            [24] 1634 	jnz	00327$
+      00078D 02r08r1B         [24] 1635 	ljmp	00156$
+      000790                       1636 00327$:
+                                   1637 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:191: printf("\n\r%d\t0X0%x\t\t0X0%x\t\t %d\t\t%d\t%d\n\r",d,startaddr[d],endaddr[d],buffersizes[d],storagecountall[d],freespacesbuff[d]);
+      000790 C0 04            [24] 1638 	push	ar4
+      000792 C0 05            [24] 1639 	push	ar5
+      000794 E5*05            [12] 1640 	mov	a,_main_sloc2_1_0
+      000796 24r85            [12] 1641 	add	a,#_main_freespacesbuff_131072_67
+      000798 F5 82            [12] 1642 	mov	dpl,a
+      00079A E5*06            [12] 1643 	mov	a,(_main_sloc2_1_0 + 1)
+      00079C 34s10            [12] 1644 	addc	a,#(_main_freespacesbuff_131072_67 >> 8)
+      00079E F5 83            [12] 1645 	mov	dph,a
+      0007A0 E0               [24] 1646 	movx	a,@dptr
+      0007A1 FC               [12] 1647 	mov	r4,a
+      0007A2 A3               [24] 1648 	inc	dptr
+      0007A3 E0               [24] 1649 	movx	a,@dptr
+      0007A4 FD               [12] 1650 	mov	r5,a
+      0007A5 E5*05            [12] 1651 	mov	a,_main_sloc2_1_0
+      0007A7 24r5B            [12] 1652 	add	a,#_main_storagecountall_131072_67
+      0007A9 F5 82            [12] 1653 	mov	dpl,a
+      0007AB E5*06            [12] 1654 	mov	a,(_main_sloc2_1_0 + 1)
+      0007AD 34s10            [12] 1655 	addc	a,#(_main_storagecountall_131072_67 >> 8)
+      0007AF F5 83            [12] 1656 	mov	dph,a
+      0007B1 E0               [24] 1657 	movx	a,@dptr
+      0007B2 FE               [12] 1658 	mov	r6,a
+      0007B3 A3               [24] 1659 	inc	dptr
+      0007B4 E0               [24] 1660 	movx	a,@dptr
+      0007B5 FF               [12] 1661 	mov	r7,a
+      0007B6 E5*05            [12] 1662 	mov	a,_main_sloc2_1_0
+      0007B8 24r33            [12] 1663 	add	a,#_main_buffersizes_131072_67
+      0007BA F5 82            [12] 1664 	mov	dpl,a
+      0007BC E5*06            [12] 1665 	mov	a,(_main_sloc2_1_0 + 1)
+      0007BE 34s10            [12] 1666 	addc	a,#(_main_buffersizes_131072_67 >> 8)
+      0007C0 F5 83            [12] 1667 	mov	dph,a
+      0007C2 E0               [24] 1668 	movx	a,@dptr
+      0007C3 F5*00            [12] 1669 	mov	_main_sloc0_1_0,a
+      0007C5 A3               [24] 1670 	inc	dptr
+      0007C6 E0               [24] 1671 	movx	a,@dptr
+      0007C7 F5*01            [12] 1672 	mov	(_main_sloc0_1_0 + 1),a
+      0007C9 E5*05            [12] 1673 	mov	a,_main_sloc2_1_0
+      0007CB 24r0B            [12] 1674 	add	a,#_main_endaddr_131072_67
+      0007CD F5 82            [12] 1675 	mov	dpl,a
+      0007CF E5*06            [12] 1676 	mov	a,(_main_sloc2_1_0 + 1)
+      0007D1 34s10            [12] 1677 	addc	a,#(_main_endaddr_131072_67 >> 8)
+      0007D3 F5 83            [12] 1678 	mov	dph,a
+      0007D5 E0               [24] 1679 	movx	a,@dptr
+      0007D6 FA               [12] 1680 	mov	r2,a
+      0007D7 A3               [24] 1681 	inc	dptr
+      0007D8 E0               [24] 1682 	movx	a,@dptr
+      0007D9 FB               [12] 1683 	mov	r3,a
+      0007DA C0 05            [24] 1684 	push	ar5
+      0007DC C0 04            [24] 1685 	push	ar4
+      0007DE C0 01            [24] 1686 	push	ar1
+      0007E0 C0 00            [24] 1687 	push	ar0
+      0007E2 C0 04            [24] 1688 	push	ar4
+      0007E4 C0 05            [24] 1689 	push	ar5
+      0007E6 C0 06            [24] 1690 	push	ar6
+      0007E8 C0 07            [24] 1691 	push	ar7
+      0007EA C0*00            [24] 1692 	push	_main_sloc0_1_0
+      0007EC C0*01            [24] 1693 	push	(_main_sloc0_1_0 + 1)
+      0007EE C0 02            [24] 1694 	push	ar2
+      0007F0 C0 03            [24] 1695 	push	ar3
+      0007F2 C0*03            [24] 1696 	push	_main_sloc1_1_0
+      0007F4 C0*04            [24] 1697 	push	(_main_sloc1_1_0 + 1)
+      0007F6 C0*08            [24] 1698 	push	_main_sloc3_1_0
+      0007F8 C0*09            [24] 1699 	push	(_main_sloc3_1_0 + 1)
+      0007FA 74r94            [12] 1700 	mov	a,#___str_26
+      0007FC C0 E0            [24] 1701 	push	acc
+      0007FE 74s04            [12] 1702 	mov	a,#(___str_26 >> 8)
+      000800 C0 E0            [24] 1703 	push	acc
+      000802 74 80            [12] 1704 	mov	a,#0x80
+      000804 C0 E0            [24] 1705 	push	acc
+      000806 12r00r00         [24] 1706 	lcall	_printf
+      000809 E5 81            [12] 1707 	mov	a,sp
+      00080B 24 F1            [12] 1708 	add	a,#0xf1
+      00080D F5 81            [12] 1709 	mov	sp,a
+      00080F D0 00            [24] 1710 	pop	ar0
+      000811 D0 01            [24] 1711 	pop	ar1
+      000813 D0 04            [24] 1712 	pop	ar4
+      000815 D0 05            [24] 1713 	pop	ar5
+                                   1714 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:236: main();
+      000817 D0 05            [24] 1715 	pop	ar5
+      000819 D0 04            [24] 1716 	pop	ar4
+                                   1717 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:191: printf("\n\r%d\t0X0%x\t\t0X0%x\t\t %d\t\t%d\t%d\n\r",d,startaddr[d],endaddr[d],buffersizes[d],storagecountall[d],freespacesbuff[d]);
+      00081B                       1718 00156$:
+                                   1719 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:187: for (d=0; d< buffnewcount; d++)
+      00081B 05*08            [12] 1720 	inc	_main_sloc3_1_0
+      00081D E4               [12] 1721 	clr	a
+      00081E B5*08 02         [24] 1722 	cjne	a,_main_sloc3_1_0,00328$
+      000821 05*09            [12] 1723 	inc	(_main_sloc3_1_0 + 1)
+      000823                       1724 00328$:
+      000823 02r07r53         [24] 1725 	ljmp	00155$
+      000826                       1726 00134$:
+                                   1727 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:194: printf("\n \r Total no. of characters after ? sign --> %d \n \r",totalcharafterQ);
+      000826 C0 05            [24] 1728 	push	ar5
+      000828 C0 04            [24] 1729 	push	ar4
+      00082A 90r10r83         [24] 1730 	mov	dptr,#_main_totalcharafterQ_131072_67
+      00082D E0               [24] 1731 	movx	a,@dptr
+      00082E C0 E0            [24] 1732 	push	acc
+      000830 A3               [24] 1733 	inc	dptr
+      000831 E0               [24] 1734 	movx	a,@dptr
+      000832 C0 E0            [24] 1735 	push	acc
+      000834 74rB4            [12] 1736 	mov	a,#___str_27
+      000836 C0 E0            [24] 1737 	push	acc
+      000838 74s04            [12] 1738 	mov	a,#(___str_27 >> 8)
+      00083A C0 E0            [24] 1739 	push	acc
+      00083C 74 80            [12] 1740 	mov	a,#0x80
+      00083E C0 E0            [24] 1741 	push	acc
+      000840 12r00r00         [24] 1742 	lcall	_printf
+      000843 E5 81            [12] 1743 	mov	a,sp
+      000845 24 FB            [12] 1744 	add	a,#0xfb
+      000847 F5 81            [12] 1745 	mov	sp,a
+                                   1746 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:195: totalcharafterQ=0;
+      000849 90r10r83         [24] 1747 	mov	dptr,#_main_totalcharafterQ_131072_67
+      00084C E4               [12] 1748 	clr	a
+      00084D F0               [24] 1749 	movx	@dptr,a
+      00084E A3               [24] 1750 	inc	dptr
+      00084F F0               [24] 1751 	movx	@dptr,a
+                                   1752 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:197: printf("\n \rData at Buffer 0: \t");
+      000850 74rE8            [12] 1753 	mov	a,#___str_28
+      000852 C0 E0            [24] 1754 	push	acc
+      000854 74s04            [12] 1755 	mov	a,#(___str_28 >> 8)
+      000856 C0 E0            [24] 1756 	push	acc
+      000858 74 80            [12] 1757 	mov	a,#0x80
+      00085A C0 E0            [24] 1758 	push	acc
+      00085C 12r00r00         [24] 1759 	lcall	_printf
+      00085F 15 81            [12] 1760 	dec	sp
+      000861 15 81            [12] 1761 	dec	sp
+      000863 15 81            [12] 1762 	dec	sp
+      000865 D0 04            [24] 1763 	pop	ar4
+      000867 D0 05            [24] 1764 	pop	ar5
+                                   1765 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:198: for(e=0; e< totalstoragecount; e++)
+      000869 90r0FrE1         [24] 1766 	mov	dptr,#_main_totalstoragecount_131072_67
+      00086C E0               [24] 1767 	movx	a,@dptr
+      00086D FE               [12] 1768 	mov	r6,a
+      00086E A3               [24] 1769 	inc	dptr
+      00086F E0               [24] 1770 	movx	a,@dptr
+      000870 FF               [12] 1771 	mov	r7,a
+      000871 7A 00            [12] 1772 	mov	r2,#0x00
+      000873 7B 00            [12] 1773 	mov	r3,#0x00
+      000875                       1774 00158$:
+      000875 8A 00            [24] 1775 	mov	ar0,r2
+      000877 8B 01            [24] 1776 	mov	ar1,r3
+      000879 C3               [12] 1777 	clr	c
+      00087A E8               [12] 1778 	mov	a,r0
+      00087B 9E               [12] 1779 	subb	a,r6
+      00087C E9               [12] 1780 	mov	a,r1
+      00087D 9F               [12] 1781 	subb	a,r7
+      00087E 40 03            [24] 1782 	jc	00329$
+      000880 02r09r1C         [24] 1783 	ljmp	00137$
+      000883                       1784 00329$:
+                                   1785 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:200: printf("%c  ",*(buffer[0]+e));
+      000883 C0 04            [24] 1786 	push	ar4
+      000885 C0 05            [24] 1787 	push	ar5
+      000887 90r0FrA3         [24] 1788 	mov	dptr,#_main_buffer_131072_67
+      00088A E0               [24] 1789 	movx	a,@dptr
+      00088B F8               [12] 1790 	mov	r0,a
+      00088C A3               [24] 1791 	inc	dptr
+      00088D E0               [24] 1792 	movx	a,@dptr
+      00088E F9               [12] 1793 	mov	r1,a
+      00088F A3               [24] 1794 	inc	dptr
+      000890 E0               [24] 1795 	movx	a,@dptr
+      000891 FD               [12] 1796 	mov	r5,a
+      000892 EA               [12] 1797 	mov	a,r2
+      000893 28               [12] 1798 	add	a,r0
+      000894 F8               [12] 1799 	mov	r0,a
+      000895 EB               [12] 1800 	mov	a,r3
+      000896 39               [12] 1801 	addc	a,r1
+      000897 F9               [12] 1802 	mov	r1,a
+      000898 88 82            [24] 1803 	mov	dpl,r0
+      00089A 89 83            [24] 1804 	mov	dph,r1
+      00089C 8D F0            [24] 1805 	mov	b,r5
+      00089E 12r00r00         [24] 1806 	lcall	__gptrget
+      0008A1 F8               [12] 1807 	mov	r0,a
+      0008A2 7D 00            [12] 1808 	mov	r5,#0x00
+      0008A4 C0 07            [24] 1809 	push	ar7
+      0008A6 C0 06            [24] 1810 	push	ar6
+      0008A8 C0 05            [24] 1811 	push	ar5
+      0008AA C0 04            [24] 1812 	push	ar4
+      0008AC C0 03            [24] 1813 	push	ar3
+      0008AE C0 02            [24] 1814 	push	ar2
+      0008B0 C0 00            [24] 1815 	push	ar0
+      0008B2 C0 05            [24] 1816 	push	ar5
+      0008B4 74rFF            [12] 1817 	mov	a,#___str_29
+      0008B6 C0 E0            [24] 1818 	push	acc
+      0008B8 74s04            [12] 1819 	mov	a,#(___str_29 >> 8)
+      0008BA C0 E0            [24] 1820 	push	acc
+      0008BC 74 80            [12] 1821 	mov	a,#0x80
+      0008BE C0 E0            [24] 1822 	push	acc
+      0008C0 12r00r00         [24] 1823 	lcall	_printf
+      0008C3 E5 81            [12] 1824 	mov	a,sp
+      0008C5 24 FB            [12] 1825 	add	a,#0xfb
+      0008C7 F5 81            [12] 1826 	mov	sp,a
+      0008C9 D0 02            [24] 1827 	pop	ar2
+      0008CB D0 03            [24] 1828 	pop	ar3
+      0008CD D0 04            [24] 1829 	pop	ar4
+      0008CF D0 05            [24] 1830 	pop	ar5
+      0008D1 D0 06            [24] 1831 	pop	ar6
+      0008D3 D0 07            [24] 1832 	pop	ar7
+                                   1833 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:201: if (e==64)
+      0008D5 BA 40 05         [24] 1834 	cjne	r2,#0x40,00330$
+      0008D8 BB 00 02         [24] 1835 	cjne	r3,#0x00,00330$
+      0008DB 80 06            [24] 1836 	sjmp	00331$
+      0008DD                       1837 00330$:
+      0008DD D0 05            [24] 1838 	pop	ar5
+      0008DF D0 04            [24] 1839 	pop	ar4
+      0008E1 80 31            [24] 1840 	sjmp	00159$
+      0008E3                       1841 00331$:
+      0008E3 D0 05            [24] 1842 	pop	ar5
+      0008E5 D0 04            [24] 1843 	pop	ar4
+                                   1844 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:203: printf("\n");
+      0008E7 C0 07            [24] 1845 	push	ar7
+      0008E9 C0 06            [24] 1846 	push	ar6
+      0008EB C0 05            [24] 1847 	push	ar5
+      0008ED C0 04            [24] 1848 	push	ar4
+      0008EF C0 03            [24] 1849 	push	ar3
+      0008F1 C0 02            [24] 1850 	push	ar2
+      0008F3 74r04            [12] 1851 	mov	a,#___str_30
+      0008F5 C0 E0            [24] 1852 	push	acc
+      0008F7 74s05            [12] 1853 	mov	a,#(___str_30 >> 8)
+      0008F9 C0 E0            [24] 1854 	push	acc
+      0008FB 74 80            [12] 1855 	mov	a,#0x80
+      0008FD C0 E0            [24] 1856 	push	acc
+      0008FF 12r00r00         [24] 1857 	lcall	_printf
+      000902 15 81            [12] 1858 	dec	sp
+      000904 15 81            [12] 1859 	dec	sp
+      000906 15 81            [12] 1860 	dec	sp
+      000908 D0 02            [24] 1861 	pop	ar2
+      00090A D0 03            [24] 1862 	pop	ar3
+      00090C D0 04            [24] 1863 	pop	ar4
+      00090E D0 05            [24] 1864 	pop	ar5
+      000910 D0 06            [24] 1865 	pop	ar6
+      000912 D0 07            [24] 1866 	pop	ar7
+      000914                       1867 00159$:
+                                   1868 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:198: for(e=0; e< totalstoragecount; e++)
+      000914 0A               [12] 1869 	inc	r2
+      000915 BA 00 01         [24] 1870 	cjne	r2,#0x00,00332$
+      000918 0B               [12] 1871 	inc	r3
+      000919                       1872 00332$:
+      000919 02r08r75         [24] 1873 	ljmp	00158$
+      00091C                       1874 00137$:
+                                   1875 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:206: totalstoragecount=0;
+      00091C 90r0FrE1         [24] 1876 	mov	dptr,#_main_totalstoragecount_131072_67
+      00091F E4               [12] 1877 	clr	a
+      000920 F0               [24] 1878 	movx	@dptr,a
+      000921 A3               [24] 1879 	inc	dptr
+      000922 F0               [24] 1880 	movx	@dptr,a
+      000923                       1881 00139$:
+                                   1882 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:209: if (takechar=='=')    //  Data printing of buffer 0
+      000923 74 3D            [12] 1883 	mov	a,#0x3d
+      000925 B5*0C 06         [24] 1884 	cjne	a,_main_sloc5_1_0,00333$
+      000928 E4               [12] 1885 	clr	a
+      000929 B5*0D 02         [24] 1886 	cjne	a,(_main_sloc5_1_0 + 1),00333$
+      00092C 80 03            [24] 1887 	sjmp	00334$
+      00092E                       1888 00333$:
+      00092E 02r0Ar49         [24] 1889 	ljmp	00144$
+      000931                       1890 00334$:
+                                   1891 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:211: DEBUGPORT(0xE5);
+      000931 75 82 E5         [24] 1892 	mov	dpl,#0xe5
+      000934 C0 05            [24] 1893 	push	ar5
+      000936 C0 04            [24] 1894 	push	ar4
+      000938 12r00r00         [24] 1895 	lcall	_dataout
+                                   1896 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:212: printf("\n \r ########## Data Inside Buffer 0 ##############");
+      00093B 74r06            [12] 1897 	mov	a,#___str_31
+      00093D C0 E0            [24] 1898 	push	acc
+      00093F 74s05            [12] 1899 	mov	a,#(___str_31 >> 8)
+      000941 C0 E0            [24] 1900 	push	acc
+      000943 74 80            [12] 1901 	mov	a,#0x80
+      000945 C0 E0            [24] 1902 	push	acc
+      000947 12r00r00         [24] 1903 	lcall	_printf
+      00094A 15 81            [12] 1904 	dec	sp
+      00094C 15 81            [12] 1905 	dec	sp
+      00094E 15 81            [12] 1906 	dec	sp
+      000950 D0 04            [24] 1907 	pop	ar4
+      000952 D0 05            [24] 1908 	pop	ar5
+                                   1909 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:214: for(g=0; g< totalstoragecount; g++)
+      000954 90r0FrE1         [24] 1910 	mov	dptr,#_main_totalstoragecount_131072_67
+      000957 E0               [24] 1911 	movx	a,@dptr
+      000958 FE               [12] 1912 	mov	r6,a
+      000959 A3               [24] 1913 	inc	dptr
+      00095A E0               [24] 1914 	movx	a,@dptr
+      00095B FF               [12] 1915 	mov	r7,a
+      00095C 7A 00            [12] 1916 	mov	r2,#0x00
+      00095E 7B 00            [12] 1917 	mov	r3,#0x00
+      000960                       1918 00161$:
+      000960 8A 00            [24] 1919 	mov	ar0,r2
+      000962 8B 01            [24] 1920 	mov	ar1,r3
+      000964 C3               [12] 1921 	clr	c
+      000965 E8               [12] 1922 	mov	a,r0
+      000966 9E               [12] 1923 	subb	a,r6
+      000967 E9               [12] 1924 	mov	a,r1
+      000968 9F               [12] 1925 	subb	a,r7
+      000969 40 03            [24] 1926 	jc	00335$
+      00096B 02r0Ar49         [24] 1927 	ljmp	00144$
+      00096E                       1928 00335$:
+                                   1929 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:216: if(g%16==0)
+      00096E 90r00r00         [24] 1930 	mov	dptr,#__modsint_PARM_2
+      000971 74 10            [12] 1931 	mov	a,#0x10
+      000973 F0               [24] 1932 	movx	@dptr,a
+      000974 E4               [12] 1933 	clr	a
+      000975 A3               [24] 1934 	inc	dptr
+      000976 F0               [24] 1935 	movx	@dptr,a
+      000977 8A 82            [24] 1936 	mov	dpl,r2
+      000979 8B 83            [24] 1937 	mov	dph,r3
+      00097B C0 07            [24] 1938 	push	ar7
+      00097D C0 06            [24] 1939 	push	ar6
+      00097F C0 05            [24] 1940 	push	ar5
+      000981 C0 04            [24] 1941 	push	ar4
+      000983 C0 03            [24] 1942 	push	ar3
+      000985 C0 02            [24] 1943 	push	ar2
+      000987 12r00r00         [24] 1944 	lcall	__modsint
+      00098A E5 82            [12] 1945 	mov	a,dpl
+      00098C 85 83 F0         [24] 1946 	mov	b,dph
+      00098F D0 02            [24] 1947 	pop	ar2
+      000991 D0 03            [24] 1948 	pop	ar3
+      000993 D0 04            [24] 1949 	pop	ar4
+      000995 D0 05            [24] 1950 	pop	ar5
+      000997 D0 06            [24] 1951 	pop	ar6
+      000999 D0 07            [24] 1952 	pop	ar7
+      00099B 45 F0            [12] 1953 	orl	a,b
+      00099D 70 4C            [24] 1954 	jnz	00141$
+                                   1955 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:218: printf("\n \r %p :",(buffer[0]+g));
+      00099F C0 04            [24] 1956 	push	ar4
+      0009A1 C0 05            [24] 1957 	push	ar5
+      0009A3 90r0FrA3         [24] 1958 	mov	dptr,#_main_buffer_131072_67
+      0009A6 E0               [24] 1959 	movx	a,@dptr
+      0009A7 F8               [12] 1960 	mov	r0,a
+      0009A8 A3               [24] 1961 	inc	dptr
+      0009A9 E0               [24] 1962 	movx	a,@dptr
+      0009AA F9               [12] 1963 	mov	r1,a
+      0009AB A3               [24] 1964 	inc	dptr
+      0009AC E0               [24] 1965 	movx	a,@dptr
+      0009AD FD               [12] 1966 	mov	r5,a
+      0009AE EA               [12] 1967 	mov	a,r2
+      0009AF 28               [12] 1968 	add	a,r0
+      0009B0 F8               [12] 1969 	mov	r0,a
+      0009B1 EB               [12] 1970 	mov	a,r3
+      0009B2 39               [12] 1971 	addc	a,r1
+      0009B3 F9               [12] 1972 	mov	r1,a
+      0009B4 C0 07            [24] 1973 	push	ar7
+      0009B6 C0 06            [24] 1974 	push	ar6
+      0009B8 C0 05            [24] 1975 	push	ar5
+      0009BA C0 04            [24] 1976 	push	ar4
+      0009BC C0 03            [24] 1977 	push	ar3
+      0009BE C0 02            [24] 1978 	push	ar2
+      0009C0 C0 00            [24] 1979 	push	ar0
+      0009C2 C0 01            [24] 1980 	push	ar1
+      0009C4 C0 05            [24] 1981 	push	ar5
+      0009C6 74r39            [12] 1982 	mov	a,#___str_32
+      0009C8 C0 E0            [24] 1983 	push	acc
+      0009CA 74s05            [12] 1984 	mov	a,#(___str_32 >> 8)
+      0009CC C0 E0            [24] 1985 	push	acc
+      0009CE 74 80            [12] 1986 	mov	a,#0x80
+      0009D0 C0 E0            [24] 1987 	push	acc
+      0009D2 12r00r00         [24] 1988 	lcall	_printf
+      0009D5 E5 81            [12] 1989 	mov	a,sp
+      0009D7 24 FA            [12] 1990 	add	a,#0xfa
+      0009D9 F5 81            [12] 1991 	mov	sp,a
+      0009DB D0 02            [24] 1992 	pop	ar2
+      0009DD D0 03            [24] 1993 	pop	ar3
+      0009DF D0 04            [24] 1994 	pop	ar4
+      0009E1 D0 05            [24] 1995 	pop	ar5
+      0009E3 D0 06            [24] 1996 	pop	ar6
+      0009E5 D0 07            [24] 1997 	pop	ar7
+                                   1998 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:236: main();
+      0009E7 D0 05            [24] 1999 	pop	ar5
+      0009E9 D0 04            [24] 2000 	pop	ar4
+                                   2001 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:218: printf("\n \r %p :",(buffer[0]+g));
+      0009EB                       2002 00141$:
+                                   2003 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:220: printf("%x ",*(buffer[0]+g));
+      0009EB C0 04            [24] 2004 	push	ar4
+      0009ED C0 05            [24] 2005 	push	ar5
+      0009EF 90r0FrA3         [24] 2006 	mov	dptr,#_main_buffer_131072_67
+      0009F2 E0               [24] 2007 	movx	a,@dptr
+      0009F3 F8               [12] 2008 	mov	r0,a
+      0009F4 A3               [24] 2009 	inc	dptr
+      0009F5 E0               [24] 2010 	movx	a,@dptr
+      0009F6 F9               [12] 2011 	mov	r1,a
+      0009F7 A3               [24] 2012 	inc	dptr
+      0009F8 E0               [24] 2013 	movx	a,@dptr
+      0009F9 FD               [12] 2014 	mov	r5,a
+      0009FA EA               [12] 2015 	mov	a,r2
+      0009FB 28               [12] 2016 	add	a,r0
+      0009FC F8               [12] 2017 	mov	r0,a
+      0009FD EB               [12] 2018 	mov	a,r3
+      0009FE 39               [12] 2019 	addc	a,r1
+      0009FF F9               [12] 2020 	mov	r1,a
+      000A00 88 82            [24] 2021 	mov	dpl,r0
+      000A02 89 83            [24] 2022 	mov	dph,r1
+      000A04 8D F0            [24] 2023 	mov	b,r5
+      000A06 12r00r00         [24] 2024 	lcall	__gptrget
+      000A09 F8               [12] 2025 	mov	r0,a
+      000A0A 7D 00            [12] 2026 	mov	r5,#0x00
+      000A0C C0 07            [24] 2027 	push	ar7
+      000A0E C0 06            [24] 2028 	push	ar6
+      000A10 C0 05            [24] 2029 	push	ar5
+      000A12 C0 04            [24] 2030 	push	ar4
+      000A14 C0 03            [24] 2031 	push	ar3
+      000A16 C0 02            [24] 2032 	push	ar2
+      000A18 C0 00            [24] 2033 	push	ar0
+      000A1A C0 05            [24] 2034 	push	ar5
+      000A1C 74r42            [12] 2035 	mov	a,#___str_33
+      000A1E C0 E0            [24] 2036 	push	acc
+      000A20 74s05            [12] 2037 	mov	a,#(___str_33 >> 8)
+      000A22 C0 E0            [24] 2038 	push	acc
+      000A24 74 80            [12] 2039 	mov	a,#0x80
+      000A26 C0 E0            [24] 2040 	push	acc
+      000A28 12r00r00         [24] 2041 	lcall	_printf
+      000A2B E5 81            [12] 2042 	mov	a,sp
+      000A2D 24 FB            [12] 2043 	add	a,#0xfb
+      000A2F F5 81            [12] 2044 	mov	sp,a
+      000A31 D0 02            [24] 2045 	pop	ar2
+      000A33 D0 03            [24] 2046 	pop	ar3
+      000A35 D0 04            [24] 2047 	pop	ar4
+      000A37 D0 05            [24] 2048 	pop	ar5
+      000A39 D0 06            [24] 2049 	pop	ar6
+      000A3B D0 07            [24] 2050 	pop	ar7
+                                   2051 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:214: for(g=0; g< totalstoragecount; g++)
+      000A3D 0A               [12] 2052 	inc	r2
+      000A3E BA 00 01         [24] 2053 	cjne	r2,#0x00,00337$
+      000A41 0B               [12] 2054 	inc	r3
+      000A42                       2055 00337$:
+      000A42 D0 05            [24] 2056 	pop	ar5
+      000A44 D0 04            [24] 2057 	pop	ar4
+      000A46 02r09r60         [24] 2058 	ljmp	00161$
+      000A49                       2059 00144$:
+                                   2060 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:223: if (takechar=='@')     //to clear all the buffers
+      000A49 74 40            [12] 2061 	mov	a,#0x40
+      000A4B B5*0C 06         [24] 2062 	cjne	a,_main_sloc5_1_0,00338$
+      000A4E E4               [12] 2063 	clr	a
+      000A4F B5*0D 02         [24] 2064 	cjne	a,(_main_sloc5_1_0 + 1),00338$
+      000A52 80 03            [24] 2065 	sjmp	00339$
+      000A54                       2066 00338$:
+      000A54 02r02r89         [24] 2067 	ljmp	00149$
+      000A57                       2068 00339$:
+                                   2069 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:225: DEBUGPORT(0xAC);
+      000A57 75 82 AC         [24] 2070 	mov	dpl,#0xac
+      000A5A C0 05            [24] 2071 	push	ar5
+      000A5C C0 04            [24] 2072 	push	ar4
+      000A5E 12r00r00         [24] 2073 	lcall	_dataout
+                                   2074 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:229: printf("\n \r ########## All Buffers Cleared ##############");
+      000A61 74r46            [12] 2075 	mov	a,#___str_34
+      000A63 C0 E0            [24] 2076 	push	acc
+      000A65 74s05            [12] 2077 	mov	a,#(___str_34 >> 8)
+      000A67 C0 E0            [24] 2078 	push	acc
+      000A69 74 80            [12] 2079 	mov	a,#0x80
+      000A6B C0 E0            [24] 2080 	push	acc
+      000A6D 12r00r00         [24] 2081 	lcall	_printf
+      000A70 15 81            [12] 2082 	dec	sp
+      000A72 15 81            [12] 2083 	dec	sp
+      000A74 15 81            [12] 2084 	dec	sp
+      000A76 D0 04            [24] 2085 	pop	ar4
+      000A78 D0 05            [24] 2086 	pop	ar5
+                                   2087 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:230: for (k=0; k<buffnewcount; k++)
+      000A7A AE*0A            [24] 2088 	mov	r6,_main_sloc4_1_0
+      000A7C AF*0B            [24] 2089 	mov	r7,(_main_sloc4_1_0 + 1)
+      000A7E 7A 00            [12] 2090 	mov	r2,#0x00
+      000A80 7B 00            [12] 2091 	mov	r3,#0x00
+      000A82                       2092 00164$:
+      000A82 8A 00            [24] 2093 	mov	ar0,r2
+      000A84 8B 01            [24] 2094 	mov	ar1,r3
+      000A86 C3               [12] 2095 	clr	c
+      000A87 E8               [12] 2096 	mov	a,r0
+      000A88 9E               [12] 2097 	subb	a,r6
+      000A89 E9               [12] 2098 	mov	a,r1
+      000A8A 9F               [12] 2099 	subb	a,r7
+      000A8B 40 03            [24] 2100 	jc	00340$
+      000A8D 02r0Br32         [24] 2101 	ljmp	00145$
+      000A90                       2102 00340$:
+                                   2103 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:232: free(buffer[k]);
+      000A90 C0 04            [24] 2104 	push	ar4
+      000A92 C0 05            [24] 2105 	push	ar5
+      000A94 90r00r00         [24] 2106 	mov	dptr,#__mulint_PARM_2
+      000A97 EA               [12] 2107 	mov	a,r2
+      000A98 F0               [24] 2108 	movx	@dptr,a
+      000A99 EB               [12] 2109 	mov	a,r3
+      000A9A A3               [24] 2110 	inc	dptr
+      000A9B F0               [24] 2111 	movx	@dptr,a
+      000A9C 90 00 03         [24] 2112 	mov	dptr,#0x0003
+      000A9F C0 07            [24] 2113 	push	ar7
+      000AA1 C0 06            [24] 2114 	push	ar6
+      000AA3 C0 05            [24] 2115 	push	ar5
+      000AA5 C0 04            [24] 2116 	push	ar4
+      000AA7 C0 03            [24] 2117 	push	ar3
+      000AA9 C0 02            [24] 2118 	push	ar2
+      000AAB 12r00r00         [24] 2119 	lcall	__mulint
+      000AAE A8 82            [24] 2120 	mov	r0,dpl
+      000AB0 A9 83            [24] 2121 	mov	r1,dph
+      000AB2 D0 02            [24] 2122 	pop	ar2
+      000AB4 D0 03            [24] 2123 	pop	ar3
+      000AB6 D0 04            [24] 2124 	pop	ar4
+      000AB8 D0 05            [24] 2125 	pop	ar5
+      000ABA E8               [12] 2126 	mov	a,r0
+      000ABB 24rA3            [12] 2127 	add	a,#_main_buffer_131072_67
+      000ABD F5 82            [12] 2128 	mov	dpl,a
+      000ABF E9               [12] 2129 	mov	a,r1
+      000AC0 34s0F            [12] 2130 	addc	a,#(_main_buffer_131072_67 >> 8)
+      000AC2 F5 83            [12] 2131 	mov	dph,a
+      000AC4 E0               [24] 2132 	movx	a,@dptr
+      000AC5 F8               [12] 2133 	mov	r0,a
+      000AC6 A3               [24] 2134 	inc	dptr
+      000AC7 E0               [24] 2135 	movx	a,@dptr
+      000AC8 F9               [12] 2136 	mov	r1,a
+      000AC9 A3               [24] 2137 	inc	dptr
+      000ACA E0               [24] 2138 	movx	a,@dptr
+      000ACB FD               [12] 2139 	mov	r5,a
+      000ACC 88 82            [24] 2140 	mov	dpl,r0
+      000ACE 89 83            [24] 2141 	mov	dph,r1
+      000AD0 8D F0            [24] 2142 	mov	b,r5
+      000AD2 C0 05            [24] 2143 	push	ar5
+      000AD4 C0 04            [24] 2144 	push	ar4
+      000AD6 C0 03            [24] 2145 	push	ar3
+      000AD8 C0 02            [24] 2146 	push	ar2
+      000ADA 12r00r00         [24] 2147 	lcall	_free
+      000ADD D0 02            [24] 2148 	pop	ar2
+      000ADF D0 03            [24] 2149 	pop	ar3
+      000AE1 D0 04            [24] 2150 	pop	ar4
+      000AE3 D0 05            [24] 2151 	pop	ar5
+                                   2152 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:233: startaddr[k]=0;
+      000AE5 EA               [12] 2153 	mov	a,r2
+      000AE6 2A               [12] 2154 	add	a,r2
+      000AE7 FC               [12] 2155 	mov	r4,a
+      000AE8 EB               [12] 2156 	mov	a,r3
+      000AE9 33               [12] 2157 	rlc	a
+      000AEA FD               [12] 2158 	mov	r5,a
+      000AEB EC               [12] 2159 	mov	a,r4
+      000AEC 24rE3            [12] 2160 	add	a,#_main_startaddr_131072_67
+      000AEE F5 82            [12] 2161 	mov	dpl,a
+      000AF0 ED               [12] 2162 	mov	a,r5
+      000AF1 34s0F            [12] 2163 	addc	a,#(_main_startaddr_131072_67 >> 8)
+      000AF3 F5 83            [12] 2164 	mov	dph,a
+      000AF5 E4               [12] 2165 	clr	a
+      000AF6 F0               [24] 2166 	movx	@dptr,a
+      000AF7 A3               [24] 2167 	inc	dptr
+      000AF8 F0               [24] 2168 	movx	@dptr,a
+                                   2169 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:234: printf("\n \r Buffer %d Cleared \n",k);
+      000AF9 C0 05            [24] 2170 	push	ar5
+      000AFB C0 04            [24] 2171 	push	ar4
+      000AFD C0 03            [24] 2172 	push	ar3
+      000AFF C0 02            [24] 2173 	push	ar2
+      000B01 C0 02            [24] 2174 	push	ar2
+      000B03 C0 03            [24] 2175 	push	ar3
+      000B05 74r78            [12] 2176 	mov	a,#___str_35
+      000B07 C0 E0            [24] 2177 	push	acc
+      000B09 74s05            [12] 2178 	mov	a,#(___str_35 >> 8)
+      000B0B C0 E0            [24] 2179 	push	acc
+      000B0D 74 80            [12] 2180 	mov	a,#0x80
+      000B0F C0 E0            [24] 2181 	push	acc
+      000B11 12r00r00         [24] 2182 	lcall	_printf
+      000B14 E5 81            [12] 2183 	mov	a,sp
+      000B16 24 FB            [12] 2184 	add	a,#0xfb
+      000B18 F5 81            [12] 2185 	mov	sp,a
+      000B1A D0 02            [24] 2186 	pop	ar2
+      000B1C D0 03            [24] 2187 	pop	ar3
+      000B1E D0 04            [24] 2188 	pop	ar4
+      000B20 D0 05            [24] 2189 	pop	ar5
+      000B22 D0 06            [24] 2190 	pop	ar6
+      000B24 D0 07            [24] 2191 	pop	ar7
+                                   2192 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:230: for (k=0; k<buffnewcount; k++)
+      000B26 0A               [12] 2193 	inc	r2
+      000B27 BA 00 01         [24] 2194 	cjne	r2,#0x00,00341$
+      000B2A 0B               [12] 2195 	inc	r3
+      000B2B                       2196 00341$:
+      000B2B D0 05            [24] 2197 	pop	ar5
+      000B2D D0 04            [24] 2198 	pop	ar4
+      000B2F 02r0Ar82         [24] 2199 	ljmp	00164$
+      000B32                       2200 00145$:
+                                   2201 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:236: main();
+      000B32 C0 05            [24] 2202 	push	ar5
+      000B34 C0 04            [24] 2203 	push	ar4
+      000B36 12r00r12         [24] 2204 	lcall	_main
+      000B39 D0 04            [24] 2205 	pop	ar4
+      000B3B D0 05            [24] 2206 	pop	ar5
+                                   2207 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:243: }
+      000B3D 02r02r89         [24] 2208 	ljmp	00149$
+                                   2209 ;------------------------------------------------------------
+                                   2210 ;Allocation info for local variables in function 'takeinput'
+                                   2211 ;------------------------------------------------------------
+                                   2212 ;no                        Allocated with name '_takeinput_no_65537_103'
+                                   2213 ;number                    Allocated with name '_takeinput_number_65537_103'
+                                   2214 ;i                         Allocated with name '_takeinput_i_65537_103'
+                                   2215 ;------------------------------------------------------------
+                                   2216 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:247: int takeinput()  // to take input from a user
+                                   2217 ;	-----------------------------------------
+                                   2218 ;	 function takeinput
+                                   2219 ;	-----------------------------------------
+      000B40                       2220 _takeinput:
+                                   2221 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:249: printf_tiny("\n \r Enter a number in valid range as mentioned \n \r");
+      000B40 74r90            [12] 2222 	mov	a,#___str_36
+      000B42 C0 E0            [24] 2223 	push	acc
+      000B44 74s05            [12] 2224 	mov	a,#(___str_36 >> 8)
+      000B46 C0 E0            [24] 2225 	push	acc
+      000B48 12r00r00         [24] 2226 	lcall	_printf_tiny
+      000B4B 15 81            [12] 2227 	dec	sp
+      000B4D 15 81            [12] 2228 	dec	sp
+                                   2229 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:252: uint16_t number = 0;
+      000B4F 90r10rAD         [24] 2230 	mov	dptr,#_takeinput_number_65537_103
+      000B52 E4               [12] 2231 	clr	a
+      000B53 F0               [24] 2232 	movx	@dptr,a
+      000B54 A3               [24] 2233 	inc	dptr
+      000B55 F0               [24] 2234 	movx	@dptr,a
+                                   2235 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:254: do
+      000B56 7E 01            [12] 2236 	mov	r6,#0x01
+      000B58 7F 00            [12] 2237 	mov	r7,#0x00
+      000B5A                       2238 00105$:
+                                   2239 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:256: no= getchar();
+      000B5A C0 07            [24] 2240 	push	ar7
+      000B5C C0 06            [24] 2241 	push	ar6
+      000B5E 12r0Cr01         [24] 2242 	lcall	_getchar
+      000B61 AC 82            [24] 2243 	mov	r4,dpl
+      000B63 AD 83            [24] 2244 	mov	r5,dph
+      000B65 D0 06            [24] 2245 	pop	ar6
+      000B67 D0 07            [24] 2246 	pop	ar7
+                                   2247 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:257: if (no>47 && no<58){
+      000B69 8C 02            [24] 2248 	mov	ar2,r4
+      000B6B 8D 03            [24] 2249 	mov	ar3,r5
+      000B6D C3               [12] 2250 	clr	c
+      000B6E 74 2F            [12] 2251 	mov	a,#0x2f
+      000B70 9A               [12] 2252 	subb	a,r2
+      000B71 E4               [12] 2253 	clr	a
+      000B72 9B               [12] 2254 	subb	a,r3
+      000B73 50 5E            [24] 2255 	jnc	00107$
+      000B75 8C 02            [24] 2256 	mov	ar2,r4
+      000B77 8D 03            [24] 2257 	mov	ar3,r5
+      000B79 C3               [12] 2258 	clr	c
+      000B7A EA               [12] 2259 	mov	a,r2
+      000B7B 94 3A            [12] 2260 	subb	a,#0x3a
+      000B7D EB               [12] 2261 	mov	a,r3
+      000B7E 94 00            [12] 2262 	subb	a,#0x00
+      000B80 50 51            [24] 2263 	jnc	00107$
+                                   2264 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:258: number = (number*10) + (no - '0');
+      000B82 90r10rAD         [24] 2265 	mov	dptr,#_takeinput_number_65537_103
+      000B85 E0               [24] 2266 	movx	a,@dptr
+      000B86 FA               [12] 2267 	mov	r2,a
+      000B87 A3               [24] 2268 	inc	dptr
+      000B88 E0               [24] 2269 	movx	a,@dptr
+      000B89 FB               [12] 2270 	mov	r3,a
+      000B8A 90r00r00         [24] 2271 	mov	dptr,#__mulint_PARM_2
+      000B8D EA               [12] 2272 	mov	a,r2
+      000B8E F0               [24] 2273 	movx	@dptr,a
+      000B8F EB               [12] 2274 	mov	a,r3
+      000B90 A3               [24] 2275 	inc	dptr
+      000B91 F0               [24] 2276 	movx	@dptr,a
+      000B92 90 00 0A         [24] 2277 	mov	dptr,#0x000a
+      000B95 C0 07            [24] 2278 	push	ar7
+      000B97 C0 06            [24] 2279 	push	ar6
+      000B99 C0 05            [24] 2280 	push	ar5
+      000B9B C0 04            [24] 2281 	push	ar4
+      000B9D 12r00r00         [24] 2282 	lcall	__mulint
+      000BA0 AA 82            [24] 2283 	mov	r2,dpl
+      000BA2 AB 83            [24] 2284 	mov	r3,dph
+      000BA4 D0 04            [24] 2285 	pop	ar4
+      000BA6 D0 05            [24] 2286 	pop	ar5
+      000BA8 EC               [12] 2287 	mov	a,r4
+      000BA9 24 D0            [12] 2288 	add	a,#0xd0
+      000BAB F8               [12] 2289 	mov	r0,a
+      000BAC ED               [12] 2290 	mov	a,r5
+      000BAD 34 FF            [12] 2291 	addc	a,#0xff
+      000BAF F9               [12] 2292 	mov	r1,a
+      000BB0 90r10rAD         [24] 2293 	mov	dptr,#_takeinput_number_65537_103
+      000BB3 E8               [12] 2294 	mov	a,r0
+      000BB4 2A               [12] 2295 	add	a,r2
+      000BB5 F0               [24] 2296 	movx	@dptr,a
+      000BB6 E9               [12] 2297 	mov	a,r1
+      000BB7 3B               [12] 2298 	addc	a,r3
+      000BB8 A3               [24] 2299 	inc	dptr
+      000BB9 F0               [24] 2300 	movx	@dptr,a
+                                   2301 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:263: putchar(no);
+      000BBA 8C 82            [24] 2302 	mov	dpl,r4
+      000BBC 8D 83            [24] 2303 	mov	dph,r5
+      000BBE 12r0Cr0F         [24] 2304 	lcall	_putchar
+      000BC1 D0 06            [24] 2305 	pop	ar6
+      000BC3 D0 07            [24] 2306 	pop	ar7
+                                   2307 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:264: i++;
+      000BC5 0E               [12] 2308 	inc	r6
+      000BC6 BE 00 01         [24] 2309 	cjne	r6,#0x00,00125$
+      000BC9 0F               [12] 2310 	inc	r7
+      000BCA                       2311 00125$:
+                                   2312 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:265: } while (i < 5);
+      000BCA C3               [12] 2313 	clr	c
+      000BCB EE               [12] 2314 	mov	a,r6
+      000BCC 94 05            [12] 2315 	subb	a,#0x05
+      000BCE EF               [12] 2316 	mov	a,r7
+      000BCF 94 00            [12] 2317 	subb	a,#0x00
+      000BD1 40 87            [24] 2318 	jc	00105$
+      000BD3                       2319 00107$:
+                                   2320 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:266: printf("\n Size Number = %d \n",number);
+      000BD3 90r10rAD         [24] 2321 	mov	dptr,#_takeinput_number_65537_103
+      000BD6 E0               [24] 2322 	movx	a,@dptr
+      000BD7 FE               [12] 2323 	mov	r6,a
+      000BD8 A3               [24] 2324 	inc	dptr
+      000BD9 E0               [24] 2325 	movx	a,@dptr
+      000BDA FF               [12] 2326 	mov	r7,a
+      000BDB C0 07            [24] 2327 	push	ar7
+      000BDD C0 06            [24] 2328 	push	ar6
+      000BDF C0 06            [24] 2329 	push	ar6
+      000BE1 C0 07            [24] 2330 	push	ar7
+      000BE3 74rC3            [12] 2331 	mov	a,#___str_37
+      000BE5 C0 E0            [24] 2332 	push	acc
+      000BE7 74s05            [12] 2333 	mov	a,#(___str_37 >> 8)
+      000BE9 C0 E0            [24] 2334 	push	acc
+      000BEB 74 80            [12] 2335 	mov	a,#0x80
+      000BED C0 E0            [24] 2336 	push	acc
+      000BEF 12r00r00         [24] 2337 	lcall	_printf
+      000BF2 E5 81            [12] 2338 	mov	a,sp
+      000BF4 24 FB            [12] 2339 	add	a,#0xfb
+      000BF6 F5 81            [12] 2340 	mov	sp,a
+      000BF8 D0 06            [24] 2341 	pop	ar6
+      000BFA D0 07            [24] 2342 	pop	ar7
+                                   2343 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:267: return number;
+      000BFC 8E 82            [24] 2344 	mov	dpl,r6
+      000BFE 8F 83            [24] 2345 	mov	dph,r7
+                                   2346 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:271: }
+      000C00 22               [24] 2347 	ret
+                                   2348 ;------------------------------------------------------------
+                                   2349 ;Allocation info for local variables in function 'getchar'
+                                   2350 ;------------------------------------------------------------
+                                   2351 ;x                         Allocated with name '_getchar_x_65536_107'
+                                   2352 ;------------------------------------------------------------
+                                   2353 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:272: int getchar()
+                                   2354 ;	-----------------------------------------
+                                   2355 ;	 function getchar
+                                   2356 ;	-----------------------------------------
+      000C01                       2357 _getchar:
+                                   2358 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:275: while(!RI)
+      000C01                       2359 00101$:
+                                   2360 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:279: RI =0;
+                                   2361 ;	assignBit
+      000C01 10 98 02         [24] 2362 	jbc	_RI,00114$
+      000C04 80 FB            [24] 2363 	sjmp	00101$
+      000C06                       2364 00114$:
+                                   2365 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:280: x = SBUF;
+      000C06 AE 99            [24] 2366 	mov	r6,_SBUF
+      000C08 7F 00            [12] 2367 	mov	r7,#0x00
+                                   2368 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:281: return x;
+      000C0A 8E 82            [24] 2369 	mov	dpl,r6
+      000C0C 8F 83            [24] 2370 	mov	dph,r7
+                                   2371 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:282: }
+      000C0E 22               [24] 2372 	ret
+                                   2373 ;------------------------------------------------------------
+                                   2374 ;Allocation info for local variables in function 'putchar'
+                                   2375 ;------------------------------------------------------------
+                                   2376 ;b                         Allocated with name '_putchar_b_65536_109'
+                                   2377 ;------------------------------------------------------------
+                                   2378 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:285: int putchar(int b)
+                                   2379 ;	-----------------------------------------
+                                   2380 ;	 function putchar
+                                   2381 ;	-----------------------------------------
+      000C0F                       2382 _putchar:
+      000C0F AF 83            [24] 2383 	mov	r7,dph
+      000C11 E5 82            [12] 2384 	mov	a,dpl
+      000C13 90r10rAF         [24] 2385 	mov	dptr,#_putchar_b_65536_109
+      000C16 F0               [24] 2386 	movx	@dptr,a
+      000C17 EF               [12] 2387 	mov	a,r7
+      000C18 A3               [24] 2388 	inc	dptr
+      000C19 F0               [24] 2389 	movx	@dptr,a
+                                   2390 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:287: while(!TI){
+      000C1A                       2391 00101$:
+                                   2392 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:290: TI =0;
+                                   2393 ;	assignBit
+      000C1A 10 99 02         [24] 2394 	jbc	_TI,00114$
+      000C1D 80 FB            [24] 2395 	sjmp	00101$
+      000C1F                       2396 00114$:
+                                   2397 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:291: SBUF = b;
+      000C1F 90r10rAF         [24] 2398 	mov	dptr,#_putchar_b_65536_109
+      000C22 E0               [24] 2399 	movx	a,@dptr
+      000C23 FE               [12] 2400 	mov	r6,a
+      000C24 A3               [24] 2401 	inc	dptr
+      000C25 E0               [24] 2402 	movx	a,@dptr
+      000C26 8E 99            [24] 2403 	mov	_SBUF,r6
+                                   2404 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:292: return 0;
+      000C28 90 00 00         [24] 2405 	mov	dptr,#0x0000
+                                   2406 ;	..\..\Desai_Lab3_Part1\c_code\abcd\main1.c:293: }
+      000C2B 22               [24] 2407 	ret
+                                   2408 	.area CSEG    (CODE)
+                                   2409 	.area CONST   (CODE)
+      000000                       2410 ___sdcc_heap_size:
+      000000 A0 0F                 2411 	.byte #0xa0, #0x0f	; 4000
+                                   2412 	.area CONST   (CODE)
+      000002                       2413 ___str_0:
+      000002 23 23 23 20 45 6E 74  2414 	.ascii "### Enter a valid buffer size for buffer 0 and 1 ###"
+             65 72 20 61 20 76 61
+             6C 69 64 20 62 75 66
+             66 65 72 20 73 69 7A
+             65 20 66 6F 72 20 62
+             75 66 66 65 72 20 30
+             20 61 6E 64 20 31 20
+             23 23 23
+      000036 00                    2415 	.db 0x00
+                                   2416 	.area CSEG    (CODE)
+                                   2417 	.area CONST   (CODE)
+      000037                       2418 ___str_1:
+      000037 0A                    2419 	.db 0x0a
+      000038 20                    2420 	.ascii " "
+      000039 0D                    2421 	.db 0x0d
+      00003A 4D 61 6C 6C 6F 63 20  2422 	.ascii "Malloc buffer0 failed"
+             62 75 66 66 65 72 30
+             20 66 61 69 6C 65 64
+      00004F 0A                    2423 	.db 0x0a
+      000050 0D                    2424 	.db 0x0d
+      000051 00                    2425 	.db 0x00
+                                   2426 	.area CSEG    (CODE)
+                                   2427 	.area CONST   (CODE)
+      000052                       2428 ___str_2:
+      000052 0A                    2429 	.db 0x0a
+      000053 20                    2430 	.ascii " "
+      000054 0D                    2431 	.db 0x0d
+      000055 4D 61 6C 6C 6F 63 20  2432 	.ascii "Malloc buffer0 passed"
+             62 75 66 66 65 72 30
+             20 70 61 73 73 65 64
+      00006A 0A                    2433 	.db 0x0a
+      00006B 0D                    2434 	.db 0x0d
+      00006C 00                    2435 	.db 0x00
+                                   2436 	.area CSEG    (CODE)
+                                   2437 	.area CONST   (CODE)
+      00006D                       2438 ___str_3:
+      00006D 0A                    2439 	.db 0x0a
+      00006E 20                    2440 	.ascii " "
+      00006F 0D                    2441 	.db 0x0d
+      000070 42 75 66 66 65 72 20  2442 	.ascii "Buffer 0 created at :0X0%x "
+             30 20 63 72 65 61 74
+             65 64 20 61 74 20 3A
+             30 58 30 25 78 20
+      00008B 0A                    2443 	.db 0x0a
+      00008C 20                    2444 	.ascii " "
+      00008D 0D                    2445 	.db 0x0d
+      00008E 00                    2446 	.db 0x00
+                                   2447 	.area CSEG    (CODE)
+                                   2448 	.area CONST   (CODE)
+      00008F                       2449 ___str_4:
+      00008F 0A                    2450 	.db 0x0a
+      000090 20                    2451 	.ascii " "
+      000091 0D                    2452 	.db 0x0d
+      000092 4D 61 6C 6C 6F 63 20  2453 	.ascii "Malloc buffer1 passed "
+             62 75 66 66 65 72 31
+             20 70 61 73 73 65 64
+             20
+      0000A8 0A                    2454 	.db 0x0a
+      0000A9 20                    2455 	.ascii " "
+      0000AA 0D                    2456 	.db 0x0d
+      0000AB 00                    2457 	.db 0x00
+                                   2458 	.area CSEG    (CODE)
+                                   2459 	.area CONST   (CODE)
+      0000AC                       2460 ___str_5:
+      0000AC 0A                    2461 	.db 0x0a
+      0000AD 20                    2462 	.ascii " "
+      0000AE 0D                    2463 	.db 0x0d
+      0000AF 42 75 66 66 65 72 20  2464 	.ascii "Buffer 1 created at : :0X0%x "
+             31 20 63 72 65 61 74
+             65 64 20 61 74 20 3A
+             20 3A 30 58 30 25 78
+             20
+      0000CC 0A                    2465 	.db 0x0a
+      0000CD 20                    2466 	.ascii " "
+      0000CE 0D                    2467 	.db 0x0d
+      0000CF 00                    2468 	.db 0x00
+                                   2469 	.area CSEG    (CODE)
+                                   2470 	.area CONST   (CODE)
+      0000D0                       2471 ___str_6:
+      0000D0 0A                    2472 	.db 0x0a
+      0000D1 20                    2473 	.ascii " "
+      0000D2 0D                    2474 	.db 0x0d
+      0000D3 4D 61 6C 6C 6F 63 20  2475 	.ascii "Malloc buffer1 failed so reenter value"
+             62 75 66 66 65 72 31
+             20 66 61 69 6C 65 64
+             20 73 6F 20 72 65 65
+             6E 74 65 72 20 76 61
+             6C 75 65
+      0000F9 0A                    2476 	.db 0x0a
+      0000FA 0D                    2477 	.db 0x0d
+      0000FB 00                    2478 	.db 0x00
+                                   2479 	.area CSEG    (CODE)
+                                   2480 	.area CONST   (CODE)
+      0000FC                       2481 ___str_7:
+      0000FC 0A                    2482 	.db 0x0a
+      0000FD 0D                    2483 	.db 0x0d
+      0000FE 20 23 23 23 23 23 23  2484 	.ascii " ####### Select from the command options below ##########"
+             23 20 53 65 6C 65 63
+             74 20 66 72 6F 6D 20
+             74 68 65 20 63 6F 6D
+             6D 61 6E 64 20 6F 70
+             74 69 6F 6E 73 20 62
+             65 6C 6F 77 20 23 23
+             23 23 23 23 23 23 23
+             23
+      000137 00                    2485 	.db 0x00
+                                   2486 	.area CSEG    (CODE)
+                                   2487 	.area CONST   (CODE)
+      000138                       2488 ___str_8:
+      000138 0A                    2489 	.db 0x0a
+      000139 20                    2490 	.ascii " "
+      00013A 0D                    2491 	.db 0x0d
+      00013B 20 31 2E 20 27 2B 27  2492 	.ascii " 1. '+' Sign --> Add a New Buffer"
+             20 53 69 67 6E 20 2D
+             2D 3E 20 41 64 64 20
+             61 20 4E 65 77 20 42
+             75 66 66 65 72
+      00015C 00                    2493 	.db 0x00
+                                   2494 	.area CSEG    (CODE)
+                                   2495 	.area CONST   (CODE)
+      00015D                       2496 ___str_9:
+      00015D 0A                    2497 	.db 0x0a
+      00015E 20                    2498 	.ascii " "
+      00015F 0D                    2499 	.db 0x0d
+      000160 20 32 2E 20 27 2D 27  2500 	.ascii " 2. '-' Sign --> Clean a Buffer"
+             20 53 69 67 6E 20 2D
+             2D 3E 20 43 6C 65 61
+             6E 20 61 20 42 75 66
+             66 65 72
+      00017F 00                    2501 	.db 0x00
+                                   2502 	.area CSEG    (CODE)
+                                   2503 	.area CONST   (CODE)
+      000180                       2504 ___str_10:
+      000180 0A                    2505 	.db 0x0a
+      000181 20                    2506 	.ascii " "
+      000182 0D                    2507 	.db 0x0d
+      000183 20 33 2E 20 27 3F 27  2508 	.ascii " 3. '?' Sign --> Display a Detailed Heap Report"
+             20 53 69 67 6E 20 2D
+             2D 3E 20 44 69 73 70
+             6C 61 79 20 61 20 44
+             65 74 61 69 6C 65 64
+             20 48 65 61 70 20 52
+             65 70 6F 72 74
+      0001B2 00                    2509 	.db 0x00
+                                   2510 	.area CSEG    (CODE)
+                                   2511 	.area CONST   (CODE)
+      0001B3                       2512 ___str_11:
+      0001B3 0A                    2513 	.db 0x0a
+      0001B4 20                    2514 	.ascii " "
+      0001B5 0D                    2515 	.db 0x0d
+      0001B6 20 34 2E 20 27 40 27  2516 	.ascii " 4. '@' Sign --> Clear all Buffers Data and Start Again"
+             20 53 69 67 6E 20 2D
+             2D 3E 20 43 6C 65 61
+             72 20 61 6C 6C 20 42
+             75 66 66 65 72 73 20
+             44 61 74 61 20 61 6E
+             64 20 53 74 61 72 74
+             20 41 67 61 69 6E
+      0001ED 00                    2517 	.db 0x00
+                                   2518 	.area CSEG    (CODE)
+                                   2519 	.area CONST   (CODE)
+      0001EE                       2520 ___str_12:
+      0001EE 0A                    2521 	.db 0x0a
+      0001EF 20                    2522 	.ascii " "
+      0001F0 0D                    2523 	.db 0x0d
+      0001F1 20 35 2E 20 27 61 27  2524 	.ascii " 5. 'a'-'z'  --> Store these Characters in Buffer 0"
+             2D 27 7A 27 20 20 2D
+             2D 3E 20 53 74 6F 72
+             65 20 74 68 65 73 65
+             20 43 68 61 72 61 63
+             74 65 72 73 20 69 6E
+             20 42 75 66 66 65 72
+             20 30
+      000224 00                    2525 	.db 0x00
+                                   2526 	.area CSEG    (CODE)
+                                   2527 	.area CONST   (CODE)
+      000225                       2528 ___str_13:
+      000225 23 23 23 23 23 23 23  2529 	.ascii "############################################################"
+             23 23 23 23 23 23 23
+             23 23 23 23 23 23 23
+             23 23 23 23 23 23 23
+             23 23 23 23 23 23 23
+             23 23 23 23 23 23 23
+             23 23 23 23 23 23 23
+             23 23 23 23 23 23 23
+             23 23 23 23
+      000261 23 23                 2530 	.ascii "##"
+      000263 00                    2531 	.db 0x00
+                                   2532 	.area CSEG    (CODE)
+                                   2533 	.area CONST   (CODE)
+      000264                       2534 ___str_14:
+      000264 0A                    2535 	.db 0x0a
+      000265 20                    2536 	.ascii " "
+      000266 0D                    2537 	.db 0x0d
+      000267 45 6E 74 65 72 20 63  2538 	.ascii "Enter character "
+             68 61 72 61 63 74 65
+             72 20
+      000277 0A                    2539 	.db 0x0a
+      000278 20                    2540 	.ascii " "
+      000279 0D                    2541 	.db 0x0d
+      00027A 00                    2542 	.db 0x00
+                                   2543 	.area CSEG    (CODE)
+                                   2544 	.area CONST   (CODE)
+      00027B                       2545 ___str_15:
+      00027B 0A                    2546 	.db 0x0a
+      00027C 20                    2547 	.ascii " "
+      00027D 0D                    2548 	.db 0x0d
+      00027E 54 6F 74 61 6C 20 6E  2549 	.ascii "Total number of characters =%d "
+             75 6D 62 65 72 20 6F
+             66 20 63 68 61 72 61
+             63 74 65 72 73 20 3D
+             25 64 20
+      00029D 0A                    2550 	.db 0x0a
+      00029E 20                    2551 	.ascii " "
+      00029F 0D                    2552 	.db 0x0d
+      0002A0 00                    2553 	.db 0x00
+                                   2554 	.area CSEG    (CODE)
+                                   2555 	.area CONST   (CODE)
+      0002A1                       2556 ___str_16:
+      0002A1 20 2D 2D 3E 20 54 68  2557 	.ascii " --> This character is stored at %p "
+             69 73 20 63 68 61 72
+             61 63 74 65 72 20 69
+             73 20 73 74 6F 72 65
+             64 20 61 74 20 25 70
+             20
+      0002C5 0A                    2558 	.db 0x0a
+      0002C6 00                    2559 	.db 0x00
+                                   2560 	.area CSEG    (CODE)
+                                   2561 	.area CONST   (CODE)
+      0002C7                       2562 ___str_17:
+      0002C7 0A                    2563 	.db 0x0a
+      0002C8 20                    2564 	.ascii " "
+      0002C9 0D                    2565 	.db 0x0d
+      0002CA 20 54 6F 74 61 6C 20  2566 	.ascii " Total number of storage characters =%d "
+             6E 75 6D 62 65 72 20
+             6F 66 20 73 74 6F 72
+             61 67 65 20 63 68 61
+             72 61 63 74 65 72 73
+             20 3D 25 64 20
+      0002F2 0A                    2567 	.db 0x0a
+      0002F3 00                    2568 	.db 0x00
+                                   2569 	.area CSEG    (CODE)
+                                   2570 	.area CONST   (CODE)
+      0002F4                       2571 ___str_18:
+      0002F4 0A                    2572 	.db 0x0a
+      0002F5 20                    2573 	.ascii " "
+      0002F6 0D                    2574 	.db 0x0d
+      0002F7 20 59 6F 75 20 6E 65  2575 	.ascii " You need to enter a number between 30 to 300 bytes to creat"
+             65 64 20 74 6F 20 65
+             6E 74 65 72 20 61 20
+             6E 75 6D 62 65 72 20
+             62 65 74 77 65 65 6E
+             20 33 30 20 74 6F 20
+             33 30 30 20 62 79 74
+             65 73 20 74 6F 20 63
+             72 65 61 74
+      000333 65 20 61 20 6E 65 77  2576 	.ascii "e a new buffer "
+             20 62 75 66 66 65 72
+             20
+      000342 0A                    2577 	.db 0x0a
+      000343 00                    2578 	.db 0x00
+                                   2579 	.area CSEG    (CODE)
+                                   2580 	.area CONST   (CODE)
+      000344                       2581 ___str_19:
+      000344 0A                    2582 	.db 0x0a
+      000345 20                    2583 	.ascii " "
+      000346 0D                    2584 	.db 0x0d
+      000347 20 4E 65 77 20 4D 61  2585 	.ascii " New Malloc buffer %d passed"
+             6C 6C 6F 63 20 62 75
+             66 66 65 72 20 25 64
+             20 70 61 73 73 65 64
+      000363 0A                    2586 	.db 0x0a
+      000364 0D                    2587 	.db 0x0d
+      000365 00                    2588 	.db 0x00
+                                   2589 	.area CSEG    (CODE)
+                                   2590 	.area CONST   (CODE)
+      000366                       2591 ___str_20:
+      000366 0A                    2592 	.db 0x0a
+      000367 20                    2593 	.ascii " "
+      000368 0D                    2594 	.db 0x0d
+      000369 20 41 64 64 72 65 73  2595 	.ascii " Address of buffer no %d: %p "
+             73 20 6F 66 20 62 75
+             66 66 65 72 20 6E 6F
+             20 25 64 3A 20 25 70
+             20
+      000386 0A                    2596 	.db 0x0a
+      000387 20                    2597 	.ascii " "
+      000388 0D                    2598 	.db 0x0d
+      000389 00                    2599 	.db 0x00
+                                   2600 	.area CSEG    (CODE)
+                                   2601 	.area CONST   (CODE)
+      00038A                       2602 ___str_21:
+      00038A 0A                    2603 	.db 0x0a
+      00038B 20                    2604 	.ascii " "
+      00038C 0D                    2605 	.db 0x0d
+      00038D 20 59 6F 75 20 6E 65  2606 	.ascii " You need to enter a valid buffer number to clear it "
+             65 64 20 74 6F 20 65
+             6E 74 65 72 20 61 20
+             76 61 6C 69 64 20 62
+             75 66 66 65 72 20 6E
+             75 6D 62 65 72 20 74
+             6F 20 63 6C 65 61 72
+             20 69 74 20
+      0003C2 0A                    2607 	.db 0x0a
+      0003C3 00                    2608 	.db 0x00
+                                   2609 	.area CSEG    (CODE)
+                                   2610 	.area CONST   (CODE)
+      0003C4                       2611 ___str_22:
+      0003C4 0A                    2612 	.db 0x0a
+      0003C5 20                    2613 	.ascii " "
+      0003C6 0D                    2614 	.db 0x0d
+      0003C7 20 42 75 66 66 65 72  2615 	.ascii " Buffer %d Cleared "
+             20 25 64 20 43 6C 65
+             61 72 65 64 20
+      0003DA 0A                    2616 	.db 0x0a
+      0003DB 20                    2617 	.ascii " "
+      0003DC 0D                    2618 	.db 0x0d
+      0003DD 00                    2619 	.db 0x00
+                                   2620 	.area CSEG    (CODE)
+                                   2621 	.area CONST   (CODE)
+      0003DE                       2622 ___str_23:
+      0003DE 0A                    2623 	.db 0x0a
+      0003DF 20                    2624 	.ascii " "
+      0003E0 0D                    2625 	.db 0x0d
+      0003E1 20 59 6F 75 20 65 6E  2626 	.ascii " You entered a wrong Buffer number "
+             74 65 72 65 64 20 61
+             20 77 72 6F 6E 67 20
+             42 75 66 66 65 72 20
+             6E 75 6D 62 65 72 20
+      000404 0A                    2627 	.db 0x0a
+      000405 20                    2628 	.ascii " "
+      000406 0D                    2629 	.db 0x0d
+      000407 00                    2630 	.db 0x00
+                                   2631 	.area CSEG    (CODE)
+                                   2632 	.area CONST   (CODE)
+      000408                       2633 ___str_24:
+      000408 0A                    2634 	.db 0x0a
+      000409 20                    2635 	.ascii " "
+      00040A 0D                    2636 	.db 0x0d
+      00040B 20 23 23 23 23 23 23  2637 	.ascii " ########################## Heap Report ####################"
+             23 23 23 23 23 23 23
+             23 23 23 23 23 23 23
+             23 23 23 23 23 23 20
+             48 65 61 70 20 52 65
+             70 6F 72 74 20 23 23
+             23 23 23 23 23 23 23
+             23 23 23 23 23 23 23
+             23 23 23 23
+      000447 23 23 23 23 23 23 23  2638 	.ascii "####### "
+             20
+      00044F 0A                    2639 	.db 0x0a
+      000450 00                    2640 	.db 0x00
+                                   2641 	.area CSEG    (CODE)
+                                   2642 	.area CONST   (CODE)
+      000451                       2643 ___str_25:
+      000451 0A                    2644 	.db 0x0a
+      000452 0D                    2645 	.db 0x0d
+      000453 42 75 66 66 65 72     2646 	.ascii "Buffer"
+      000459 09                    2647 	.db 0x09
+      00045A 53 74 61 72 74 69 6E  2648 	.ascii "Starting Addr"
+             67 20 41 64 64 72
+      000467 09                    2649 	.db 0x09
+      000468 45 73 6E 64 69 6E 67  2650 	.ascii "Esnding Addr"
+             20 41 64 64 72
+      000474 09                    2651 	.db 0x09
+      000475 53 69 7A 65           2652 	.ascii "Size"
+      000479 09                    2653 	.db 0x09
+      00047A 53 74 6F 72 61 67 65  2654 	.ascii "StorageChar"
+             43 68 61 72
+      000485 09                    2655 	.db 0x09
+      000486 20 46 72 65 65 20 53  2656 	.ascii " Free Space "
+             70 61 63 65 20
+      000492 0A                    2657 	.db 0x0a
+      000493 00                    2658 	.db 0x00
+                                   2659 	.area CSEG    (CODE)
+                                   2660 	.area CONST   (CODE)
+      000494                       2661 ___str_26:
+      000494 0A                    2662 	.db 0x0a
+      000495 0D                    2663 	.db 0x0d
+      000496 25 64                 2664 	.ascii "%d"
+      000498 09                    2665 	.db 0x09
+      000499 30 58 30 25 78        2666 	.ascii "0X0%x"
+      00049E 09                    2667 	.db 0x09
+      00049F 09                    2668 	.db 0x09
+      0004A0 30 58 30 25 78        2669 	.ascii "0X0%x"
+      0004A5 09                    2670 	.db 0x09
+      0004A6 09                    2671 	.db 0x09
+      0004A7 20 25 64              2672 	.ascii " %d"
+      0004AA 09                    2673 	.db 0x09
+      0004AB 09                    2674 	.db 0x09
+      0004AC 25 64                 2675 	.ascii "%d"
+      0004AE 09                    2676 	.db 0x09
+      0004AF 25 64                 2677 	.ascii "%d"
+      0004B1 0A                    2678 	.db 0x0a
+      0004B2 0D                    2679 	.db 0x0d
+      0004B3 00                    2680 	.db 0x00
+                                   2681 	.area CSEG    (CODE)
+                                   2682 	.area CONST   (CODE)
+      0004B4                       2683 ___str_27:
+      0004B4 0A                    2684 	.db 0x0a
+      0004B5 20                    2685 	.ascii " "
+      0004B6 0D                    2686 	.db 0x0d
+      0004B7 20 54 6F 74 61 6C 20  2687 	.ascii " Total no. of characters after ? sign --> %d "
+             6E 6F 2E 20 6F 66 20
+             63 68 61 72 61 63 74
+             65 72 73 20 61 66 74
+             65 72 20 3F 20 73 69
+             67 6E 20 2D 2D 3E 20
+             25 64 20
+      0004E4 0A                    2688 	.db 0x0a
+      0004E5 20                    2689 	.ascii " "
+      0004E6 0D                    2690 	.db 0x0d
+      0004E7 00                    2691 	.db 0x00
+                                   2692 	.area CSEG    (CODE)
+                                   2693 	.area CONST   (CODE)
+      0004E8                       2694 ___str_28:
+      0004E8 0A                    2695 	.db 0x0a
+      0004E9 20                    2696 	.ascii " "
+      0004EA 0D                    2697 	.db 0x0d
+      0004EB 44 61 74 61 20 61 74  2698 	.ascii "Data at Buffer 0: "
+             20 42 75 66 66 65 72
+             20 30 3A 20
+      0004FD 09                    2699 	.db 0x09
+      0004FE 00                    2700 	.db 0x00
+                                   2701 	.area CSEG    (CODE)
+                                   2702 	.area CONST   (CODE)
+      0004FF                       2703 ___str_29:
+      0004FF 25 63 20 20           2704 	.ascii "%c  "
+      000503 00                    2705 	.db 0x00
+                                   2706 	.area CSEG    (CODE)
+                                   2707 	.area CONST   (CODE)
+      000504                       2708 ___str_30:
+      000504 0A                    2709 	.db 0x0a
+      000505 00                    2710 	.db 0x00
+                                   2711 	.area CSEG    (CODE)
+                                   2712 	.area CONST   (CODE)
+      000506                       2713 ___str_31:
+      000506 0A                    2714 	.db 0x0a
+      000507 20                    2715 	.ascii " "
+      000508 0D                    2716 	.db 0x0d
+      000509 20 23 23 23 23 23 23  2717 	.ascii " ########## Data Inside Buffer 0 ##############"
+             23 23 23 23 20 44 61
+             74 61 20 49 6E 73 69
+             64 65 20 42 75 66 66
+             65 72 20 30 20 23 23
+             23 23 23 23 23 23 23
+             23 23 23 23 23
+      000538 00                    2718 	.db 0x00
+                                   2719 	.area CSEG    (CODE)
+                                   2720 	.area CONST   (CODE)
+      000539                       2721 ___str_32:
+      000539 0A                    2722 	.db 0x0a
+      00053A 20                    2723 	.ascii " "
+      00053B 0D                    2724 	.db 0x0d
+      00053C 20 25 70 20 3A        2725 	.ascii " %p :"
+      000541 00                    2726 	.db 0x00
+                                   2727 	.area CSEG    (CODE)
+                                   2728 	.area CONST   (CODE)
+      000542                       2729 ___str_33:
+      000542 25 78 20              2730 	.ascii "%x "
+      000545 00                    2731 	.db 0x00
+                                   2732 	.area CSEG    (CODE)
+                                   2733 	.area CONST   (CODE)
+      000546                       2734 ___str_34:
+      000546 0A                    2735 	.db 0x0a
+      000547 20                    2736 	.ascii " "
+      000548 0D                    2737 	.db 0x0d
+      000549 20 23 23 23 23 23 23  2738 	.ascii " ########## All Buffers Cleared ##############"
+             23 23 23 23 20 41 6C
+             6C 20 42 75 66 66 65
+             72 73 20 43 6C 65 61
+             72 65 64 20 23 23 23
+             23 23 23 23 23 23 23
+             23 23 23 23
+      000577 00                    2739 	.db 0x00
+                                   2740 	.area CSEG    (CODE)
+                                   2741 	.area CONST   (CODE)
+      000578                       2742 ___str_35:
+      000578 0A                    2743 	.db 0x0a
+      000579 20                    2744 	.ascii " "
+      00057A 0D                    2745 	.db 0x0d
+      00057B 20 42 75 66 66 65 72  2746 	.ascii " Buffer %d Cleared "
+             20 25 64 20 43 6C 65
+             61 72 65 64 20
+      00058E 0A                    2747 	.db 0x0a
+      00058F 00                    2748 	.db 0x00
+                                   2749 	.area CSEG    (CODE)
+                                   2750 	.area CONST   (CODE)
+      000590                       2751 ___str_36:
+      000590 0A                    2752 	.db 0x0a
+      000591 20                    2753 	.ascii " "
+      000592 0D                    2754 	.db 0x0d
+      000593 20 45 6E 74 65 72 20  2755 	.ascii " Enter a number in valid range as mentioned "
+             61 20 6E 75 6D 62 65
+             72 20 69 6E 20 76 61
+             6C 69 64 20 72 61 6E
+             67 65 20 61 73 20 6D
+             65 6E 74 69 6F 6E 65
+             64 20
+      0005BF 0A                    2756 	.db 0x0a
+      0005C0 20                    2757 	.ascii " "
+      0005C1 0D                    2758 	.db 0x0d
+      0005C2 00                    2759 	.db 0x00
+                                   2760 	.area CSEG    (CODE)
+                                   2761 	.area CONST   (CODE)
+      0005C3                       2762 ___str_37:
+      0005C3 0A                    2763 	.db 0x0a
+      0005C4 20 53 69 7A 65 20 4E  2764 	.ascii " Size Number = %d "
+             75 6D 62 65 72 20 3D
+             20 25 64 20
+      0005D6 0A                    2765 	.db 0x0a
+      0005D7 00                    2766 	.db 0x00
+                                   2767 	.area CSEG    (CODE)
+                                   2768 	.area XINIT   (CODE)
+      000000                       2769 __xinit__ptr:
+      000000 00 00                 2770 	.byte #0x00,#0x00
+                                   2771 	.area CABS    (ABS,CODE)

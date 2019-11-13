@@ -1,0 +1,26 @@
+# depslib dependency file v1.0
+1571201678 source:d:\desktop\courses\esd\lab3\blockcode\abcd\main.c
+	<at89c51ed2.h>
+	<mcs51reg.h>
+	<stdio.h>
+	<stdint.h>
+	<stdlib.h>
+
+1571438435 source:d:\desktop\courses\esd\lab3\blockcode\abcd\main1.c
+	<mcs51/8051.h>
+	<stdio.h>
+	<stdint.h>
+	<mcs51/8051.h>
+	<mcs51/mcs51reg.h>
+	<stdlib.h>
+	<ctype.h>
+
+1572152939 source:d:\desktop\courses\esd\lab3\desai_lab3_part1\c_code\abcd\main1.c
+	<mcs51/8051.h>
+	<stdio.h>
+	<stdint.h>
+	<mcs51/8051.h>
+	<mcs51/mcs51reg.h>
+	<stdlib.h>
+	<ctype.h>
+
