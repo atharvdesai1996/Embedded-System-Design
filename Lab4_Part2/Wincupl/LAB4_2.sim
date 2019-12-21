@@ -1,0 +1,39 @@
+%SIGNAL
+PIN  13 =  A10 
+PIN  12 =  A11 
+PIN   7 =  A12 
+PIN   6 =  A13 
+PIN   5 =  A14 
+PIN   3 =  A15 
+PIN  19 =  CSPERIPH 
+PIN  15 =  EPIN 
+PIN  17 =  OP 
+PIN  16 =  OP1 
+PIN   9 =  PSEN 
+PIN   8 =  RD 
+PIN  18 =  READ 
+PIN  14 =  WR 
+%END
+
+%FIELD
+%END
+
+%EQUATION
+CSPERIPH =>
+    A12 & A13 & A14 & A15
+
+EPIN =>
+    A12 & A13 & A14 & A15 & RD & !WR
+  # A12 & A13 & A14 & A15 & !RD & WR
+
+OP =>
+    A15
+  # !A10 & !A11 & !A12 & !A13 & !A14
+
+OP1 =>
+    A15
+
+READ =>
+    PSEN & RD
+
+%END

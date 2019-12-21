@@ -1,0 +1,47 @@
+# depslib dependency file v1.0
+1573350831 source:d:\desktop\courses\esd\lab4\lab4_part_1\eeprom1.3\eeprom1.3\main.c
+	<mcs51/8051.h>
+
+1573360192 source:f:\esdproblem\eeprom1.3\eeprom1.3\main.c
+	<stdio.h>
+	<mcs51/8051.h>
+	<at89c51ed2.h>
+	<mcs51/mcs51reg.h>
+	<stdint.h>
+	<stdlib.h>
+
+1573415144 source:e:\esdproblem\eeprom1.3\eeprom1.3\main.c
+	<stdio.h>
+	<mcs51/8051.h>
+	<at89c51ed2.h>
+	<mcs51/mcs51reg.h>
+	<stdint.h>
+	<stdlib.h>
+
+1573843175 source:d:\desktop\eeprom1.3\eeprom1.3\main.c
+	"main.h"
+
+1573843215 source:d:\desktop\eeprom1.3\eeprom1.3\i2c.c
+	"main.h"
+	"i2c.h"
+
+1573676806 d:\desktop\eeprom1.3\eeprom1.3\main.h
+	"i2c.h"
+	"menu.h"
+	<stdio.h>
+	<mcs51/8051.h>
+	<at89c51ed2.h>
+	<mcs51/mcs51reg.h>
+	<stdint.h>
+	<stdlib.h>
+
+1573676806 d:\desktop\eeprom1.3\eeprom1.3\i2c.h
+
+1573679518 source:d:\desktop\eeprom1.3\eeprom1.3\menu.c
+	"main.h"
+	"i2c.h"
+	"menu.h"
+
+1573843237 d:\desktop\eeprom1.3\eeprom1.3\menu.h
+	<stdint.h>
+

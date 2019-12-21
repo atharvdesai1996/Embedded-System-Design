@@ -1,0 +1,32 @@
+# depslib dependency file v1.0
+1574223261 source:d:\desktop\lab4_1.1\lcd.c
+	"lcd.h"
+
+1574238193 d:\desktop\lab4_1.1\lcd.h
+	<mcs51/8051.h>
+	<mcs51/at89c51ed2.h>
+	<stdio.h>
+	<mcs51reg.h>
+	<stdint.h>
+	<stdlib.h>
+
+1574541097 source:d:\desktop\lab4_1.1\main.c
+	<mcs51/8051.h>
+	<mcs51/at89c51ed2.h>
+	<stdio.h>
+	<mcs51reg.h>
+	<stdint.h>
+	<stdlib.h>
+	"lcd1.h"
+
+1574430656 source:d:\desktop\lab4_1.1\lcd1.c
+	"lcd1.h"
+
+1574454072 d:\desktop\lab4_1.1\lcd1.h
+	<mcs51/8051.h>
+	<mcs51/at89c51ed2.h>
+	<stdio.h>
+	<mcs51reg.h>
+	<stdint.h>
+	<stdlib.h>
+
